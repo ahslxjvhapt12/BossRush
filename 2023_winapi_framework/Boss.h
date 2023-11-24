@@ -11,10 +11,12 @@ public:
 	void Update() override;
 	void Render(HDC _dc) override;
 	virtual void EnterCollision(Collider* _pOther) override;
+	virtual void ExitCollision(Collider* _pOther)  override;
 public:
 	void Raser(Vec2 pos);
 private:
 	Texture* m_pTex;
 	int m_iHp;
+	UINT m_check;
 };
 
