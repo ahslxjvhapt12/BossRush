@@ -14,5 +14,6 @@ private:
     void CreateBullet();
 private:
     Texture* m_pTex;
+    Vec2 m_lastDir;
 };
 
