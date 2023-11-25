@@ -20,19 +20,38 @@ Player::Player()
 	//strFilePath += L"Texture\\plane.bmp";
 	//m_pTex->Load(strFilePath);
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\Player\\PlayerAnimationSheet.bmp");
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(20.f, 30.f));
+	GetCollider()->SetScale(Vec2(32.f, 32.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 
 	// 엉엉엉 내 20분 ㅠㅠㅠ ㅁ날어;ㅣ남러;ㅁ나얼
 	CreateAnimator();
-	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->PlayAnim(L"Jiwoo_Front", true);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+
+	// Idle
+	GetAnimator()->CreateAnim(L"Idle_Up", m_pTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Down", m_pTex, Vec2(0.f, 32.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Left", m_pTex, Vec2(0.f, 64.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Right", m_pTex, Vec2(0.f, 96.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+
+	// Walk
+	GetAnimator()->CreateAnim(L"Walk_Up", m_pTex, Vec2(0.f, 128.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Down", m_pTex, Vec2(0.f, 160.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Left", m_pTex, Vec2(0.f, 192.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Right", m_pTex, Vec2(0.f, 224.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+
+	// Shoot
+	GetAnimator()->CreateAnim(L"Shoot_Up", m_pTex, Vec2(0.f, 256.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Down", m_pTex, Vec2(0.f, 288.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Left", m_pTex, Vec2(0.f, 320.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Right", m_pTex, Vec2(0.f, 352.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+
+	GetAnimator()->PlayAnim(L"Idle_Down", true);
 
 	//// 오프셋 건드리기
 	//Animation* pAnim = GetAnimator()->FindAnim(L"Jiwoo_Front");
