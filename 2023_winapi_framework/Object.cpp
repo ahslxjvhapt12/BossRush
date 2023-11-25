@@ -4,6 +4,8 @@
 #include "TimeMgr.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "StateMachine.h"
+
 Object::Object()
 	: m_pCollider(nullptr)
 	, m_vPos{}
@@ -34,8 +36,16 @@ void Object::CreateAnimator()
 	m_pAnimator->m_pOwner = this;
 }
 
+void Object::CreateStateMachine()
+{
+	m_pStateMachine = new StateMachine;
+	m_pStateMachine->SetOnwer(this);
+}
+
 void Object::Update()
 {
+	if (m_pStateMachine)
+		m_pStateMachine->Update();
 	//Vec2 vPos = m_obj.GetPos();
 
 //	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
@@ -77,6 +87,7 @@ void Object::Component_Render(HDC _dc)
 		m_pCollider->Render(_dc);
 	if (nullptr != m_pAnimator)
 		m_pAnimator->Render(_dc);
-
+	if (nullptr != m_pStateMachine)
+		m_pStateMachine->Render(_dc);
 }
 

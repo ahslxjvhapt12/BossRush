@@ -1,19 +1,23 @@
 #include "pch.h"
+#include "ResMgr.h"
 #include "SelectGDI.h"
 #include "Collider.h"
 #include "EventMgr.h"
-#include "ResMgr.h"
 #include "Boss.h"
+#include "Texture.h"
 
 Boss::Boss()
 	: m_pTex(nullptr)
 	, m_iHp(100)
 	, m_check(0)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\cylinder.png");
-	
+
+	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Bullet.bmp");
+	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Untitled - _1_.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\planem.bmp");
 	CreateCollider();
-	//GetCollider()->SetScale(Vec2(20.f,45.f));
+	GetCollider()->SetOffSetPos(Vec2(-7.f,-15.f));
+	GetCollider()->SetScale(Vec2(70.f, 70.f));
 }
 
 Boss::~Boss()
@@ -27,19 +31,29 @@ void Boss::Update()
 
 void Boss::Render(HDC _dc)
 {
+	Vec2 vPos = GetPos();
+	Vec2 vScale = GetScale();
+	int Width = m_pTex->GetWidth();
+	int Height = m_pTex->GetHeight();
+	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
+	TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2), Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 0, 255));
 
 #pragma region 피격효과
-	Vec2 vScale = GetScale();
 
-	PEN_TYPE ePen = PEN_TYPE::HOLLOW;
+	PEN_TYPE epen = PEN_TYPE::HOLLOW;
+	BRUSH_TYPE ebtrush = BRUSH_TYPE::HOLLOW;
 	if (m_check)
-		ePen = PEN_TYPE::RED;
-	SelectGDI pen(_dc, ePen);
-	SelectGDI brush(_dc, BRUSH_TYPE::HOLLOW);
+	{
+		epen = PEN_TYPE::RED;
+		//ebtrush = BRUSH_TYPE::RED;
+	}
+		//RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
+		//epen = PEN_TYPE::RED;
+	SelectGDI pen(_dc, epen);
+	SelectGDI brush(_dc, ebtrush);
 
-	RECT_RENDER(vScale.x, vScale.y, vScale.x, vScale.y, _dc);
 #pragma endregion
-
+	Component_Render(_dc);
 }
 
 void Boss::EnterCollision(Collider* _pOther)

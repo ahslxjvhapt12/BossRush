@@ -1,6 +1,8 @@
 #pragma once
 class Collider;
 class Animator;
+class StateMachine;
+
 class Object
 {
 public:
@@ -28,6 +30,10 @@ public:
 	{
 		return m_pAnimator;
 	}
+	StateMachine* GetStateMachine()
+	{
+		return m_pStateMachine;
+	}
 	const wstring& GetName() const { return m_strName; }
 	void SetName(wstring _name) { m_strName = _name; }
 	bool GetIsDead() const { return !m_IsAlive; }
@@ -37,6 +43,7 @@ private:
 public:
 	void CreateCollider();
 	void CreateAnimator();
+	void CreateStateMachine();
 private:
 	Vec2 m_vPos; // 위치
 	Vec2 m_vScale; // 크기
@@ -44,5 +51,6 @@ private:
 	wstring m_strName; // 이름.
 	bool m_IsAlive;
 	Animator* m_pAnimator;
+	StateMachine* m_pStateMachine;
 };
 

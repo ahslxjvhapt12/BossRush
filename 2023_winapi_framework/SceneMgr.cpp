@@ -12,7 +12,8 @@ void SceneMgr::Init()
 	RegisterScene(L"daminScene", std::make_shared<daminScene>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"Start_Scene");
+	LoadScene(L"daminScene");
+	//LoadScene(L"Start_Scene");
 }
 
 void SceneMgr::Update()
