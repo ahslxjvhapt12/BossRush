@@ -9,7 +9,7 @@ void SceneMgr::Init()
 	// ¾À µî·Ï
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
-	RegisterScene(L"daminScene", std::make_shared<daminScene>());
+	//RegisterScene(L"daminScene", std::make_shared<daminScene>());
 
 	// Ã¹ ¾À ÁöÁ¤
 	LoadScene(L"daminScene");

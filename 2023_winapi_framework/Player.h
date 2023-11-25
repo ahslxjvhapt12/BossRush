@@ -2,18 +2,18 @@
 #include "Object.h"
 class Texture;
 class Player :
-    public Object
+	public Object
 {
 public:
-    Player();
-    ~Player();
+	Player();
+	~Player();
 public:
-    void Update() override;
-    void Render(HDC _dc) override;
+	void Update() override;
+	void Render(HDC _dc) override;
 private:
-    void CreateBullet();
+	void CreateBullet();
 private:
-    Texture* m_pTex;
-    Vec2 m_lastDir;
+	Texture* m_pTex;
+	PLAYER_DIR m_lastDir;
 };
 
