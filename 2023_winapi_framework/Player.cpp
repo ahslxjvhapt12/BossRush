@@ -73,23 +73,27 @@ void Player::Update()
 
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
+		m_lastDir = PLAYER_DIR::LEFT;
 		vPos.x -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Left", true);
+		GetAnimator()->PlayAnim(L"Idle_Left", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
+		m_lastDir = PLAYER_DIR::RIGHT;
 		vPos.x += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Right", true);
+		GetAnimator()->PlayAnim(L"Idle_Right", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))
 	{
+		m_lastDir = PLAYER_DIR::UP;
 		vPos.y -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Back", true);
+		GetAnimator()->PlayAnim(L"Idle_Up", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::DOWN))
 	{
+		m_lastDir = PLAYER_DIR::DOWN;
 		vPos.y += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Jiwoo_Front", true);
+		GetAnimator()->PlayAnim(L"Idle_Down", true);
 	}
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
