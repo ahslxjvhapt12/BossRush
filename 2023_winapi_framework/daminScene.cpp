@@ -18,8 +18,8 @@ void daminScene::Init()
 
 
 	Object* boss = new Boss;
-	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 50, Core::GetInst()->GetResolution().y / 2 })));
-	boss->SetScale(Vec2(100.f, 200.f));
+	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));
+	//boss->SetScale(Vec2(100.f, 200.f));
 	AddObject(boss, OBJECT_GROUP::MONSTER);
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.

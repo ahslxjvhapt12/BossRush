@@ -14,10 +14,13 @@ Boss::Boss()
 
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Bullet.bmp");
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Untitled - _1_.bmp");
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder1.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"Texture\\cylinderhit.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder.bmp");
+	Vec2 vPos = GetPos();
+	Vec2 vScale = GetScale();
 	CreateCollider();
-	GetCollider()->SetOffSetPos(Vec2(-7.f,-15.f));
-	GetCollider()->SetScale(Vec2(70.f, 70.f));
+	GetCollider()->SetOffSetPos(Vec2(40.f,89.f));
+	GetCollider()->SetScale(Vec2(80.f, 177.f));
 }
 
 Boss::~Boss()
@@ -36,7 +39,9 @@ void Boss::Render(HDC _dc)
 	int Width = m_pTex->GetWidth();
 	int Height = m_pTex->GetHeight();
 	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
-	TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2), Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 255, 255));
+	TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2), Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 0, 255));
+
+	//RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
 	Component_Render(_dc);
 #pragma region 피격효과
 
@@ -61,7 +66,7 @@ void Boss::EnterCollision(Collider* _pOther)
 	const Object* pOtherObj = _pOther->GetObj();
 	if (pOtherObj->GetName() == L"Player_Bullet")
 	{
-		
+		m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"Texture\\cylinderhit.bmp");
 		m_iHp--;
 		m_check++;
 		if (m_iHp <= 0)
@@ -71,6 +76,7 @@ void Boss::EnterCollision(Collider* _pOther)
 
 void Boss::ExitCollision(Collider* _pOther)
 {
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder.bmp");
 	m_check--;
 }
 
