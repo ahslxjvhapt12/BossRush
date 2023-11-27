@@ -100,8 +100,8 @@ void Player::Update()
 		CreateBullet();
 		ResMgr::GetInst()->Play(L"Shoot");
 	}
-	if (KEY_PRESS(KEY_TYPE::CTRL))
-		GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
+	//if (KEY_PRESS(KEY_TYPE::CTRL))
+	//	GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
 	SetPos(vPos);
 	GetAnimator()->Update();
 }
@@ -113,19 +113,35 @@ void Player::CreateBullet()
 	vBulletPos.y -= GetScale().y / 2.f;
 	pBullet->SetPos(vBulletPos);
 	pBullet->SetScale(Vec2(25.f, 25.f));
-	//	pBullet->SetDir(M_PI / 4 * 7);
-	//	pBullet->SetDir(120* M_PI / 180);
-	pBullet->SetDir(Vec2(-10.f, -15.f));
+
+	switch (m_lastDir)
+	{
+	case PLAYER_DIR::UP:
+		pBullet->SetDir(Vec2(0.f, -1.f));
+		break;
+	case PLAYER_DIR::DOWN:
+		pBullet->SetDir(Vec2(0.f, 1.f));
+		break;
+	case PLAYER_DIR::LEFT:
+		pBullet->SetDir(Vec2(-1.f, 0.f));
+		break;
+	case PLAYER_DIR::RIGHT:
+		pBullet->SetDir(Vec2(1.f, 0.f));
+		break;
+	}
+
+
 	pBullet->SetName(L"Player_Bullet");
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
 }
 
 void Player::Render(HDC _dc)
 {
-	//Vec2 vPos = GetPos();
-	//Vec2 vScale = GetScale();
-	//int Width = m_pTex->GetWidth();
-	//int Height = m_pTex->GetHeight();
+	Vec2 vPos = GetPos();
+	Vec2 vScale = GetScale();
+	int Width = m_pTex->GetWidth();
+	int Height = m_pTex->GetHeight();
+
 	//// 1. 기본 옮기기
 	//BitBlt(_dc
 	//	,(int)(vPos.x - vScale.x /2)

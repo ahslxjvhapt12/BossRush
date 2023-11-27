@@ -65,6 +65,9 @@
     <Filter Include="Engine\04. Object\MainObject\Boss">
       <UniqueIdentifier>{d29da31a-5522-4a3c-875f-2a57b8424b7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Component\State">
+      <UniqueIdentifier>{fcf3f613-57b3-4f00-8775-2c67c9f27e99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -166,6 +169,12 @@
     <ClInclude Include="Razer.h">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -261,6 +270,12 @@
     </ClCompile>
     <ClCompile Include="Razer.cpp">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Engine\07. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Engine\07. Component\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
