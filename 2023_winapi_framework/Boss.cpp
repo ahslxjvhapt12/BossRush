@@ -5,6 +5,9 @@
 #include "EventMgr.h"
 #include "Boss.h"
 #include "Texture.h"
+#include "State.h"
+#include "StateMachine.h"
+#include "Boss_Idle.h"
 
 Boss::Boss()
 	: m_pTex(nullptr)
@@ -18,9 +21,19 @@ Boss::Boss()
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder.bmp");
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
+
+#pragma region 콜라이더
 	CreateCollider();
 	GetCollider()->SetOffSetPos(Vec2(40.f,89.f));
 	GetCollider()->SetScale(Vec2(80.f, 177.f));
+#pragma endregion
+	State* state = new Boss_Idle;
+#pragma region FSM
+	CreateStateMachine();
+	GetStateMachine()->SetOnwer(this);
+	GetStateMachine()->AddState(L"Idle", state);
+#pragma endregion
+
 }
 
 Boss::~Boss()
@@ -66,7 +79,7 @@ void Boss::EnterCollision(Collider* _pOther)
 	const Object* pOtherObj = _pOther->GetObj();
 	if (pOtherObj->GetName() == L"Player_Bullet")
 	{
-		m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"Texture\\cylinderhit.bmp");
+		m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"null");
 		m_iHp--;
 		m_check++;
 		if (m_iHp <= 0)
@@ -76,7 +89,7 @@ void Boss::EnterCollision(Collider* _pOther)
 
 void Boss::ExitCollision(Collider* _pOther)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"null");
 	m_check--;
 }
 
@@ -84,3 +97,39 @@ void Boss::Raser(Vec2 pos)
 {
 	//SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
 }
+
+class Idle
+	: public State
+{
+public:
+
+	Idle()
+		//:m_pOwner(nullptr)
+	{
+
+	}
+	~Idle()
+	{
+
+	}
+public:
+	void OnEnter() override
+	{
+
+	}
+
+	void OnExit() override 
+	{
+
+	}
+
+	void Update() override 
+	{
+
+	}
+
+	void Render(HDC _dc)override
+	{
+
+	}
+};

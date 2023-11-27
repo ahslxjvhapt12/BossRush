@@ -8,6 +8,7 @@
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
+#include "Razer.h"
 
 void daminScene::Init()
 {
@@ -16,6 +17,14 @@ void daminScene::Init()
 	pObj->SetScale(Vec2(128.f, 128.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
+	Razer* razer = new Razer;
+	//razer->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+	razer->SetPos(Vec2(50, 50));
+	razer->SetDir(Vec2(0.f, 1.f));
+	razer->SetScale(Vec2(25.f, 25.f));
+	razer->SetName(L"Boss_Razer");
+	AddObject(razer, OBJECT_GROUP::BULLET);
+	razer->ShotRazer();
 
 	Object* boss = new Boss;
 	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));

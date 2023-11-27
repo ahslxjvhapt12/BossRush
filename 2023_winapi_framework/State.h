@@ -12,7 +12,7 @@ public:
 	virtual void OnExit();
 	virtual void Update();
 	virtual void Render(HDC _dc);
-private:
+public:
 	Object* m_pOwner;
 };
 

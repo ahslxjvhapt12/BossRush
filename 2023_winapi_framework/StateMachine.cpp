@@ -36,9 +36,11 @@ void StateMachine::AddState(const wstring& _stateName, State* _state)
 	State* pState = FindState(_stateName);
 	if (pState != nullptr)
 		return;
-	
+
 	_state->SteOwner(m_pOwner);
 	m_mapState.insert({ _stateName, _state });
+	if (m_pCurState == nullptr)
+		ChangeState(_stateName);
 }
 
 void StateMachine::ChangeState(const wstring& _stateName)
@@ -47,7 +49,8 @@ void StateMachine::ChangeState(const wstring& _stateName)
 	if (pState != nullptr)
 		return;
 
-	m_pCurState->OnExit();
+	if(m_pCurState != nullptr)
+		m_pCurState->OnExit();
 	m_pCurState = pState;
 	m_pCurState->OnEnter();
 }

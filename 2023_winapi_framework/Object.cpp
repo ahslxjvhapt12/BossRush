@@ -22,6 +22,8 @@ Object::~Object()
 		delete m_pCollider;
 	if (nullptr != m_pAnimator)
 		delete m_pAnimator;
+	if (nullptr != m_pStateMachine)
+		delete m_pStateMachine;
 
 }
 
