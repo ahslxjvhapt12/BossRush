@@ -13,7 +13,7 @@ void daminScene::Init()
 {
 	Object* pObj = new Player;
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(100.f, 100.f));
+	pObj->SetScale(Vec2(128.f, 128.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 

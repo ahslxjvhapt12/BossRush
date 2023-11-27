@@ -65,11 +65,8 @@
     <Filter Include="Engine\04. Object\MainObject\Boss">
       <UniqueIdentifier>{d29da31a-5522-4a3c-875f-2a57b8424b7e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\FsmMgr">
-      <UniqueIdentifier>{9fdffb3a-d66f-478f-95ac-266e43bf5c31}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\07. Component\State">
-      <UniqueIdentifier>{617e8a0e-a58f-4d69-bdfe-552e8155802e}</UniqueIdentifier>
+      <UniqueIdentifier>{fcf3f613-57b3-4f00-8775-2c67c9f27e99}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -172,11 +169,11 @@
     <ClInclude Include="Razer.h">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClInclude>
-    <ClInclude Include="StateMachine.h">
+    <ClInclude Include="State.h">
       <Filter>Engine\07. Component</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Engine\07. Component\State</Filter>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Engine\07. Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

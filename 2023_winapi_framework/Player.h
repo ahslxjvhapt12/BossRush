@@ -16,4 +16,3 @@ private:
 	Texture* m_pTex;
 	PLAYER_DIR m_lastDir;
 };
-
