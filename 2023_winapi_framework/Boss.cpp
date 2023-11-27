@@ -14,7 +14,7 @@ Boss::Boss()
 
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Bullet.bmp");
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Untitled - _1_.bmp");
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\planem.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder1.bmp");
 	CreateCollider();
 	GetCollider()->SetOffSetPos(Vec2(-7.f,-15.f));
 	GetCollider()->SetScale(Vec2(70.f, 70.f));
@@ -36,8 +36,8 @@ void Boss::Render(HDC _dc)
 	int Width = m_pTex->GetWidth();
 	int Height = m_pTex->GetHeight();
 	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
-	TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2), Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 0, 255));
-
+	TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2), Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 255, 255));
+	Component_Render(_dc);
 #pragma region 피격효과
 
 	PEN_TYPE epen = PEN_TYPE::HOLLOW;

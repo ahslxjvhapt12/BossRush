@@ -2,6 +2,7 @@
 #include "State.h"
 
 State::State()
+	:m_pOwner(nullptr)
 {
 }
 

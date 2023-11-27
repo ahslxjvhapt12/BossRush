@@ -12,6 +12,7 @@ Object::Object()
 	, m_vScale{}
 	, m_IsAlive(true)
 	, m_pAnimator(nullptr)
+	, m_pStateMachine(nullptr)
 {
 }
 
