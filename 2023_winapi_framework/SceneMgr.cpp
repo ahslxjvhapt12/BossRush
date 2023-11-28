@@ -2,6 +2,7 @@
 #include "SceneMgr.h"
 #include "Start_Scene.h"
 #include "daminScene.h"
+
 void SceneMgr::Init()
 {
 	m_pCurScene = nullptr;

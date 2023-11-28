@@ -48,10 +48,10 @@ Player::Player()
 	GetAnimator()->CreateAnim(L"Walk_Right", m_pTex, Vec2(0.f, 672.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
 
 	// Shoot
-	GetAnimator()->CreateAnim(L"Shoot_Up", m_pTex, Vec2(0.f, 768.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
-	GetAnimator()->CreateAnim(L"Shoot_Down", m_pTex, Vec2(0.f, 864.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
-	GetAnimator()->CreateAnim(L"Shoot_Left", m_pTex, Vec2(0.f, 960.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
-	GetAnimator()->CreateAnim(L"Shoot_Right", m_pTex, Vec2(0.f, 1056.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
+	GetAnimator()->CreateAnim(L"Shoot_Up", m_pTex, Vec2(0.f, 768.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Down", m_pTex, Vec2(0.f, 864.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Left", m_pTex, Vec2(0.f, 960.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Right", m_pTex, Vec2(0.f, 1056.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
 
 	GetAnimator()->PlayAnim(L"Idle_Down", true);
 
@@ -101,7 +101,7 @@ void Player::Update()
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
 		m_playerDir = PLAYER_DIR::RIGHT;
-		m_playerState = PLAYER_STATE::WALK;
+ 		m_playerState = PLAYER_STATE::WALK;
 		vPos.x += 100.f * fDT;
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))
@@ -126,7 +126,7 @@ void Player::Update()
 		CreateBullet();
 		ResMgr::GetInst()->Play(L"Shoot");
 		m_playerState = PLAYER_STATE::SHOOT;
-		m_shootRemainTime = 0.05f;
+		m_shootRemainTime = 0.5f;
 	}
 
 #pragma endregion
@@ -172,7 +172,7 @@ void Player::AnimationStateControl()
 	{
 		if (m_playerState == PLAYER_STATE::SHOOT)
 		{
-			GetAnimator()->PlayAnim(L"Shoot_Up", true);
+	 		GetAnimator()->PlayAnim(L"Shoot_Up", true);
 		}
 		else if (m_playerState == PLAYER_STATE::WALK)
 		{
@@ -202,7 +202,7 @@ void Player::AnimationStateControl()
 	break;
 	case PLAYER_DIR::LEFT:
 	{
-  		if (m_playerState == PLAYER_STATE::SHOOT)
+		if (m_playerState == PLAYER_STATE::SHOOT)
 		{
 			GetAnimator()->PlayAnim(L"Shoot_Left", true);
 		}
