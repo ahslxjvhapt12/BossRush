@@ -82,8 +82,8 @@ void Boss::EnterCollision(Collider* _pOther)
 		m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"null");
 		m_iHp--;
 		m_check++;
-		if (m_iHp <= 0)
-			EventMgr::GetInst()->DeleteObject(this);
+		//if (m_iHp <= 0)
+			//EventMgr::GetInst()->DeleteObject(this);
 	}
 }
 

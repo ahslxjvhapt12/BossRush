@@ -8,25 +8,24 @@
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
-#include "Razer.h"
+#include "Gaster.h"
 
 void daminScene::Init()
 {
 	Object* pObj = new Player;
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
 	pObj->SetScale(Vec2(128.f, 128.f));
+	pObj->SetName(L"player");
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
-	Razer* razer = new Razer;
+	Gaster* razer = new Gaster();
 	//razer->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
 	razer->SetPos(Vec2(50, 50));
-	razer->SetDir(Vec2(0.f, 1.f));
-	razer->SetScale(Vec2(25.f, 25.f));
+	razer->SetScale(Vec2(50.f, 50.f));
 	razer->SetName(L"Boss_Razer");
 	AddObject(razer, OBJECT_GROUP::BULLET);
-	razer->ShotRazer();
 
-	Object* boss = new Boss;
+	Object* boss = new Gaster;
 	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));
 	//boss->SetScale(Vec2(100.f, 200.f));
 	AddObject(boss, OBJECT_GROUP::MONSTER);

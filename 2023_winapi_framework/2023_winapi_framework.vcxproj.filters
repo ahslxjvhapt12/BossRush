@@ -175,6 +175,10 @@
     <ClInclude Include="StateMachine.h">
       <Filter>Engine\07. Component</Filter>
     </ClInclude>
+    <ClInclude Include="Boss_Idle.h" />
+    <ClInclude Include="Gaster.h">
+      <Filter>Engine\04. Object\MainObject\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -276,6 +280,10 @@
     </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Engine\07. Component\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Idle.cpp" />
+    <ClCompile Include="Gaster.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
