@@ -1,14 +1,12 @@
 #include "pch.h"
 #include "SceneMgr.h"
 #include "Start_Scene.h"
-#include "Game_Scene.h"
 #include "daminScene.h"
 void SceneMgr::Init()
 {
 	m_pCurScene = nullptr;
 	// ¾À µî·Ï
-	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
-	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
+	RegisterScene(L"Start_Scene", std::make_shared<Start_Scene>());
 	RegisterScene(L"daminScene", std::make_shared<daminScene>());
 
 	// Ã¹ ¾À ÁöÁ¤
@@ -46,5 +44,5 @@ void SceneMgr::LoadScene(const wstring& _scenename)
 
 void SceneMgr::RegisterScene(const wstring& _scenename, std::shared_ptr<Scene> _scene)
 {
-	m_mapScenes.insert(m_mapScenes.end(), {_scenename, _scene});
+	m_mapScenes.insert(m_mapScenes.end(), { _scenename, _scene });
 }

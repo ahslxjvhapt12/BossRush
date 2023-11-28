@@ -12,7 +12,11 @@ public:
 	void Render(HDC _dc) override;
 private:
 	void CreateBullet();
+	void AnimationStateControl();
 private:
 	Texture* m_pTex;
-	PLAYER_DIR m_lastDir;
+	PLAYER_DIR m_playerDir;
+	PLAYER_STATE m_playerState;
+	float m_shootRemainTime;
+	bool m_onShoot;
 };
