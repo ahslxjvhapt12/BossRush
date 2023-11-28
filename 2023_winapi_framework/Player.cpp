@@ -140,7 +140,7 @@ void Player::CreateBullet()
 {
 	Bullet* pBullet = new Bullet;
 	Vec2 vBulletPos = GetPos();
-	vBulletPos.y -= GetScale().y / 2.f;
+	//vBulletPos.y -= GetScale().y / 2.f;
 	pBullet->SetPos(vBulletPos);
 	pBullet->SetScale(Vec2(25.f, 25.f));
 
@@ -172,7 +172,7 @@ void Player::AnimationStateControl()
 	{
 		if (m_playerState == PLAYER_STATE::SHOOT)
 		{
-			GetAnimator()->PlayAnim(L"Shoot_Up", false);
+			GetAnimator()->PlayAnim(L"Shoot_Up", true);
 		}
 		else if (m_playerState == PLAYER_STATE::WALK)
 		{
@@ -188,7 +188,7 @@ void Player::AnimationStateControl()
 	{
 		if (m_playerState == PLAYER_STATE::SHOOT)
 		{
-			GetAnimator()->PlayAnim(L"Shoot_Down", false);
+			GetAnimator()->PlayAnim(L"Shoot_Down", true);
 		}
 		else if (m_playerState == PLAYER_STATE::WALK)
 		{
@@ -202,9 +202,9 @@ void Player::AnimationStateControl()
 	break;
 	case PLAYER_DIR::LEFT:
 	{
-		if (m_playerState == PLAYER_STATE::SHOOT)
+  		if (m_playerState == PLAYER_STATE::SHOOT)
 		{
-			GetAnimator()->PlayAnim(L"Shoot_Left", false);
+			GetAnimator()->PlayAnim(L"Shoot_Left", true);
 		}
 		else if (m_playerState == PLAYER_STATE::WALK)
 		{
