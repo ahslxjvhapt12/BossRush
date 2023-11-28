@@ -14,6 +14,9 @@
 
 Player::Player()
 	: m_pTex(nullptr)
+	, m_shootRemainTime(0.f)
+	, m_onShoot(false)
+	, m_playerState(PLAYER_STATE::IDLE)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
@@ -25,7 +28,6 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(32.f, 32.f));
 	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 
-	// ¾û¾û¾û ³» 20ºÐ ¤Ð¤Ð¤Ð ¤±³¯¾î;¤Ó³²·¯;¤±³ª¾ó
 	CreateAnimator();
 	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
@@ -34,22 +36,22 @@ Player::Player()
 	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 
 	// Idle
-	GetAnimator()->CreateAnim(L"Idle_Up", m_pTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Idle_Down", m_pTex, Vec2(0.f, 32.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Idle_Left", m_pTex, Vec2(0.f, 64.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Idle_Right", m_pTex, Vec2(0.f, 96.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Up", m_pTex, Vec2(0.f, 0.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Down", m_pTex, Vec2(0.f, 96.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Left", m_pTex, Vec2(0.f, 192.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Idle_Right", m_pTex, Vec2(0.f, 288.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
 
 	// Walk
-	GetAnimator()->CreateAnim(L"Walk_Up", m_pTex, Vec2(0.f, 128.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Walk_Down", m_pTex, Vec2(0.f, 160.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Walk_Left", m_pTex, Vec2(0.f, 192.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Walk_Right", m_pTex, Vec2(0.f, 224.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Up", m_pTex, Vec2(0.f, 384.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Down", m_pTex, Vec2(0.f, 480.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Left", m_pTex, Vec2(0.f, 576.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Walk_Right", m_pTex, Vec2(0.f, 672.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
 
 	// Shoot
-	GetAnimator()->CreateAnim(L"Shoot_Up", m_pTex, Vec2(0.f, 256.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Shoot_Down", m_pTex, Vec2(0.f, 288.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Shoot_Left", m_pTex, Vec2(0.f, 320.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
-	GetAnimator()->CreateAnim(L"Shoot_Right", m_pTex, Vec2(0.f, 352.f), Vec2(32.f, 32.f), Vec2(32.f, 0.f), 4, 0.2f);
+	GetAnimator()->CreateAnim(L"Shoot_Up", m_pTex, Vec2(0.f, 768.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
+	GetAnimator()->CreateAnim(L"Shoot_Down", m_pTex, Vec2(0.f, 864.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
+	GetAnimator()->CreateAnim(L"Shoot_Left", m_pTex, Vec2(0.f, 960.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
+	GetAnimator()->CreateAnim(L"Shoot_Right", m_pTex, Vec2(0.f, 1056.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.05f);
 
 	GetAnimator()->PlayAnim(L"Idle_Down", true);
 
@@ -71,37 +73,65 @@ void Player::Update()
 {
 	Vec2 vPos = GetPos();
 
+	m_playerState = PLAYER_STATE::IDLE;
+
+	if (m_onShoot == true)
+	{
+		m_playerState = PLAYER_STATE::SHOOT;
+		m_shootRemainTime -= fDT;
+		if (m_shootRemainTime <= 0)
+		{
+			m_onShoot = false;
+		}
+	}
+
+	if (m_onShoot == false)
+	{
+		m_playerState = PLAYER_STATE::IDLE;
+	}
+
+#pragma region ÀÌµ¿
+
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
-		m_lastDir = PLAYER_DIR::LEFT;
+		m_playerDir = PLAYER_DIR::LEFT;
+		m_playerState = PLAYER_STATE::WALK;
 		vPos.x -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Idle_Left", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
-		m_lastDir = PLAYER_DIR::RIGHT;
+		m_playerDir = PLAYER_DIR::RIGHT;
+		m_playerState = PLAYER_STATE::WALK;
 		vPos.x += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Idle_Right", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))
 	{
-		m_lastDir = PLAYER_DIR::UP;
+		m_playerDir = PLAYER_DIR::UP;
+		m_playerState = PLAYER_STATE::WALK;
 		vPos.y -= 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Idle_Up", true);
 	}
 	if (KEY_PRESS(KEY_TYPE::DOWN))
 	{
-		m_lastDir = PLAYER_DIR::DOWN;
+		m_playerDir = PLAYER_DIR::DOWN;
+		m_playerState = PLAYER_STATE::WALK;
 		vPos.y += 100.f * fDT;
-		GetAnimator()->PlayAnim(L"Idle_Down", true);
 	}
+
+#pragma endregion
+
+#pragma region ¹ß»ç
+
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
 		CreateBullet();
 		ResMgr::GetInst()->Play(L"Shoot");
+		m_playerState = PLAYER_STATE::SHOOT;
+		m_shootRemainTime = 0.05f;
 	}
-	//if (KEY_PRESS(KEY_TYPE::CTRL))
-	//	GetAnimator()->PlayAnim(L"Jiwoo_Attack", false, 1);
+
+#pragma endregion
+
+	AnimationStateControl();
 	SetPos(vPos);
 	GetAnimator()->Update();
 }
@@ -114,7 +144,7 @@ void Player::CreateBullet()
 	pBullet->SetPos(vBulletPos);
 	pBullet->SetScale(Vec2(25.f, 25.f));
 
-	switch (m_lastDir)
+	switch (m_playerDir)
 	{
 	case PLAYER_DIR::UP:
 		pBullet->SetDir(Vec2(0.f, -1.f));
@@ -130,9 +160,79 @@ void Player::CreateBullet()
 		break;
 	}
 
-
 	pBullet->SetName(L"Player_Bullet");
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+}
+
+void Player::AnimationStateControl()
+{
+	switch (m_playerDir)
+	{
+	case PLAYER_DIR::UP:
+	{
+		if (m_playerState == PLAYER_STATE::SHOOT)
+		{
+			GetAnimator()->PlayAnim(L"Shoot_Up", false);
+		}
+		else if (m_playerState == PLAYER_STATE::WALK)
+		{
+			GetAnimator()->PlayAnim(L"Walk_Up", true);
+		}
+		else if (m_playerState == PLAYER_STATE::IDLE)
+		{
+			GetAnimator()->PlayAnim(L"Idle_Up", true);
+		}
+	}
+	break;
+	case PLAYER_DIR::DOWN:
+	{
+		if (m_playerState == PLAYER_STATE::SHOOT)
+		{
+			GetAnimator()->PlayAnim(L"Shoot_Down", false);
+		}
+		else if (m_playerState == PLAYER_STATE::WALK)
+		{
+			GetAnimator()->PlayAnim(L"Walk_Down", true);
+		}
+		else if (m_playerState == PLAYER_STATE::IDLE)
+		{
+			GetAnimator()->PlayAnim(L"Idle_Down", true);
+		}
+	}
+	break;
+	case PLAYER_DIR::LEFT:
+	{
+		if (m_playerState == PLAYER_STATE::SHOOT)
+		{
+			GetAnimator()->PlayAnim(L"Shoot_Left", false);
+		}
+		else if (m_playerState == PLAYER_STATE::WALK)
+		{
+			GetAnimator()->PlayAnim(L"Walk_Left", true);
+		}
+		else if (m_playerState == PLAYER_STATE::IDLE)
+		{
+			GetAnimator()->PlayAnim(L"Idle_Left", true);
+		}
+	}
+	break;
+	case PLAYER_DIR::RIGHT:
+	{
+		if (m_playerState == PLAYER_STATE::SHOOT)
+		{
+			GetAnimator()->PlayAnim(L"Shoot_Right", false);
+		}
+		else if (m_playerState == PLAYER_STATE::WALK)
+		{
+			GetAnimator()->PlayAnim(L"Walk_Right", true);
+		}
+		else if (m_playerState == PLAYER_STATE::IDLE)
+		{
+			GetAnimator()->PlayAnim(L"Idle_Right", true);
+		}
+	}
+	break;
+	}
 }
 
 void Player::Render(HDC _dc)

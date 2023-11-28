@@ -13,6 +13,10 @@ enum class PLAYER_DIR {
 	UP, DOWN, LEFT, RIGHT
 };
 
+enum class PLAYER_STATE {
+	IDLE, SHOOT, WALK
+};
+
 enum class KEY_TYPE
 {
 	LEFT, RIGHT, UP, DOWN,

@@ -12,7 +12,7 @@ void Start_Scene::Init()
 {
 	Object* pObj = new Player;
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(300.f, 300.f));
+	pObj->SetScale(Vec2(1000.f, 1000.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
