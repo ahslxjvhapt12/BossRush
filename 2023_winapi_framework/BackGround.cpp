@@ -6,7 +6,7 @@
 BackGround::BackGround()
 	:m_pTex(nullptr)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\Tilemap.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"BackGround", L"Texture\\Tilemap.bmp");
 }
 
 BackGround::~BackGround()
@@ -22,7 +22,7 @@ void BackGround::Render(HDC _dc)
 	int Height = m_pTex->GetHeight();
 
 
-	for (int j = 0; j < 20; ++j)
+	for (int j = 0; j < 21; ++j)
 	{
 		for (int i = 0; i < 32; ++i)
 		{
