@@ -7,6 +7,7 @@
 #include "Wall.h"
 #include "Monster.h"
 #include "KeyMgr.h"
+#include "Fence.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 
@@ -21,7 +22,12 @@ void Start_Scene::Init()
 	Object* pWall = new Wall;
 	pWall->SetPos(Vec2(100.f, 100.f));
 	pWall->SetScale(Vec2(200.f, 200.f));
-	AddObject(pWall, OBJECT_GROUP::BACKGROUND);
+	AddObject(pWall, OBJECT_GROUP::WALL);
+
+	Fence* pFence = new Fence;
+	pFence->SetPos(Vec2(100.f, 100.f));
+	pFence->SetScale(Vec2(200.f, 200.f));
+	AddObject(pFence, OBJECT_GROUP::HOLE);
 
 	//Object* pObj = new Player;
 	//pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
@@ -58,6 +64,9 @@ void Start_Scene::Init()
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::WALL);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::WALL);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::HOLE);
 }
 
 void Start_Scene::Update()

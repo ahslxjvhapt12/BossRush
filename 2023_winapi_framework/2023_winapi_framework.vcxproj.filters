@@ -178,6 +178,7 @@
     </ClInclude>
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="Fence.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -283,5 +284,6 @@
     </ClCompile>
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Fence.cpp" />
   </ItemGroup>
 </Project>
