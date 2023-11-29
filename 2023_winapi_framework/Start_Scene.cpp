@@ -3,6 +3,8 @@
 #include "Object.h"
 #include "Core.h"
 #include "Player.h"
+#include "BackGround.h"
+#include "Wall.h"
 #include "Monster.h"
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
@@ -10,10 +12,21 @@
 
 void Start_Scene::Init()
 {
-	Object* pObj = new Player;
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(200.f, 200.f));
-	AddObject(pObj, OBJECT_GROUP::PLAYER);
+	// 
+	Object* pBG = new BackGround;
+	pBG->SetPos(Vec2(100.f, 100.f));
+	pBG->SetScale(Vec2(200.f, 200.f));
+	AddObject(pBG, OBJECT_GROUP::BACKGROUND);
+
+	Object* pWall = new Wall;
+	pWall->SetPos(Vec2(100.f, 100.f));
+	pWall->SetScale(Vec2(200.f, 200.f));
+	AddObject(pWall, OBJECT_GROUP::BACKGROUND);
+
+	//Object* pObj = new Player;
+	//pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+	//pObj->SetScale(Vec2(200.f, 200.f));
+	//AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
 
@@ -36,6 +49,9 @@ void Start_Scene::Init()
 	//	AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	//}
 	// 사운드 세팅
+
+
+
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->Play(L"BGM");

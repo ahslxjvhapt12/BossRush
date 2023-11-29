@@ -176,6 +176,8 @@
     <ClInclude Include="Gaster.h">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -279,5 +281,7 @@
     <ClCompile Include="Gaster.cpp">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
 </Project>
