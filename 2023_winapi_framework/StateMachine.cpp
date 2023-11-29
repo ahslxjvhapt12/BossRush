@@ -4,7 +4,6 @@
 
 StateMachine::StateMachine()
 	:m_pCurState(nullptr)
-	,m_pOwner(nullptr)
 {
 }
 
@@ -31,14 +30,16 @@ void StateMachine::Render(HDC _dc)
 		m_pCurState->Render(_dc);
 }
 
+
 void StateMachine::AddState(const wstring& _stateName, State* _state)
 {
 	State* pState = FindState(_stateName);
 	if (pState != nullptr)
 		return;
 
-	_state->SteOwner(m_pOwner);
-	m_mapState.insert({ _stateName, _state });
+	pState = _state;
+	pState->m_pOwner = m_pOwner;
+	m_mapState.insert({ _stateName, pState });
 	if (m_pCurState == nullptr)
 		ChangeState(_stateName);
 }
@@ -46,9 +47,8 @@ void StateMachine::AddState(const wstring& _stateName, State* _state)
 void StateMachine::ChangeState(const wstring& _stateName)
 {
 	State* pState = FindState(_stateName);
-	if (pState != nullptr)
+	if (pState == nullptr)
 		return;
-
 	if(m_pCurState != nullptr)
 		m_pCurState->OnExit();
 	m_pCurState = pState;

@@ -8,6 +8,11 @@
 #include "State.h"
 #include "StateMachine.h"
 #include "Boss_Idle.h"
+#include "Snow.h"
+#include "Core.h"
+#include "SceneMgr.h"
+#include "Scene.h"
+#include "Boss_Attack_Snow.h"
 
 Boss::Boss()
 	: m_pTex(nullptr)
@@ -19,6 +24,7 @@ Boss::Boss()
 	//m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\Untitled - _1_.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"Texture\\cylinderhit.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder.bmp");
+
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
 
@@ -27,12 +33,30 @@ Boss::Boss()
 	GetCollider()->SetOffSetPos(Vec2(40.f,89.f));
 	GetCollider()->SetScale(Vec2(80.f, 177.f));
 #pragma endregion
-	State* state = new Boss_Idle;
+
 #pragma region FSM
 	CreateStateMachine();
-	GetStateMachine()->SetOnwer(this);
-	GetStateMachine()->AddState(L"Idle", state);
+	//GetStateMachine()->SetOnwer(this);
+
+	Boss_Idle* Idle = new Boss_Idle;
+	GetStateMachine()->AddState(L"Idle", Idle);
+
+	Boss_Attack_Snow* AttackSnow = new Boss_Attack_Snow;
+	GetStateMachine()->AddState(L"AttackSnow", AttackSnow);
+	GetStateMachine()->ChangeState(L"AttackSnow");
+	//state->OnEnter();
 #pragma endregion
+
+	/*LONG maxXpos = Core::GetInst()->GetResolution().x;
+	for (int i = 0; i < 50; i++)
+	{
+		float xPos = rand() % maxXpos;
+		Object* snow = new Snow;
+		snow->SetPos(Vec2(xPos, 0.f));
+		snow->SetScale(Vec2(30.f, 30.f));
+		snow->SetName(L"Snow");
+		SceneMgr::GetInst()->GetCurScene()->AddObject(snow, OBJECT_GROUP::MONSTER);
+	}*/
 
 }
 
@@ -55,22 +79,6 @@ void Boss::Render(HDC _dc)
 	TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2), Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 0, 255));
 
 	//RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
-	Component_Render(_dc);
-#pragma region 피격효과
-
-	PEN_TYPE epen = PEN_TYPE::HOLLOW;
-	BRUSH_TYPE ebtrush = BRUSH_TYPE::HOLLOW;
-	if (m_check)
-	{
-		epen = PEN_TYPE::RED;
-		//ebtrush = BRUSH_TYPE::RED;
-	}
-		//RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
-		//epen = PEN_TYPE::RED;
-	SelectGDI pen(_dc, epen);
-	SelectGDI brush(_dc, ebtrush);
-
-#pragma endregion
 	Component_Render(_dc);
 }
 
@@ -97,39 +105,3 @@ void Boss::Raser(Vec2 pos)
 {
 	//SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
 }
-
-class Idle
-	: public State
-{
-public:
-
-	Idle()
-		//:m_pOwner(nullptr)
-	{
-
-	}
-	~Idle()
-	{
-
-	}
-public:
-	void OnEnter() override
-	{
-
-	}
-
-	void OnExit() override 
-	{
-
-	}
-
-	void Update() override 
-	{
-
-	}
-
-	void Render(HDC _dc)override
-	{
-
-	}
-};

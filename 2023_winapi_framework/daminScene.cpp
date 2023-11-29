@@ -9,6 +9,7 @@
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 #include "Gaster.h"
+#include "Snow.h"
 
 void daminScene::Init()
 {
@@ -21,14 +22,26 @@ void daminScene::Init()
 	Gaster* razer = new Gaster();
 	//razer->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
 	razer->SetPos(Vec2(50, 50));
-	razer->SetScale(Vec2(50.f, 50.f));
+	razer->SetScale(Vec2(100.f, 100.f));
 	razer->SetName(L"Boss_Razer");
 	AddObject(razer, OBJECT_GROUP::BULLET);
 
-	Object* boss = new Gaster;
+	Object* boss = new Boss;
 	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));
-	//boss->SetScale(Vec2(100.f, 200.f));
 	AddObject(boss, OBJECT_GROUP::MONSTER);
+
+
+
+	/*LONG maxXpos = Core::GetInst()->GetResolution().x;
+	for (int i = 0; i < 50; i++) 
+	{
+		float xPos = rand() % maxXpos;
+		Object* snow = new Snow;
+		snow->SetPos(Vec2(xPos, 0.f));
+		snow->SetScale(Vec2(30.f, 30.f));
+		snow->SetName(L"Snow");
+		AddObject(snow, OBJECT_GROUP::MONSTER);
+	}*/
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
 
@@ -59,6 +72,7 @@ void daminScene::Init()
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::MONSTER, OBJECT_GROUP::PLAYER);
 }
 
 void daminScene::Update()

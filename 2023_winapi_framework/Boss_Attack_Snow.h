@@ -2,11 +2,11 @@
 #include "State.h"
 class Object;
 
-class Boss_Idle : public State
+class Boss_Attack_Snow : public State
 {
 public:
-	Boss_Idle();
-	~Boss_Idle();
+	Boss_Attack_Snow();
+	~Boss_Attack_Snow();
 public:
 	void OnEnter() override;
 	void Update() override;

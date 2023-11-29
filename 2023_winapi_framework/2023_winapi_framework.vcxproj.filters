@@ -68,6 +68,12 @@
     <Filter Include="Engine\07. Component\State">
       <UniqueIdentifier>{fcf3f613-57b3-4f00-8775-2c67c9f27e99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\MainObject\Boss\Attack">
+      <UniqueIdentifier>{5f6a0a36-2dd8-416c-9727-016c0ffaa43a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\MainObject\Boss\States">
+      <UniqueIdentifier>{c0471979-4cc1-44ed-81ad-5bfe9fff4b50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -163,18 +169,26 @@
     <ClInclude Include="Boss.h">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClInclude>
-    <ClInclude Include="Razer.h">
-      <Filter>Engine\04. Object\MainObject\Boss</Filter>
-    </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Engine\07. Component</Filter>
     </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Engine\07. Component</Filter>
     </ClInclude>
-    <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Gaster.h">
-      <Filter>Engine\04. Object\MainObject\Boss</Filter>
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Razer.h">
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Snow.h">
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Idle.h">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Attack_Snow.h">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,18 +280,26 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Engine\04. Object\MainObject\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="Razer.cpp">
-      <Filter>Engine\04. Object\MainObject\Boss</Filter>
-    </ClCompile>
     <ClCompile Include="StateMachine.cpp">
       <Filter>Engine\07. Component</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Engine\07. Component\State</Filter>
     </ClCompile>
-    <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Gaster.cpp">
-      <Filter>Engine\04. Object\MainObject\Boss</Filter>
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="Razer.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="Snow.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Idle.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Attack_Snow.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

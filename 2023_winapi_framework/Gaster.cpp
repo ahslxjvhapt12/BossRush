@@ -24,10 +24,12 @@ Gaster::Gaster()
 	CreateCollider();
 
 #pragma region Animation
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Gaster", L"Texture\\Gaster.bmp");
+
 	CreateAnimator();
-	GetAnimator()->CreateAnim(L"Gaster", m_pTex, Vec2(0.f, 0.f), Vec2(48.666f, 57.f), Vec2(48.666f, 0.f), 6, m_shotDelay/6);
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Gaster", L"Texture\\RazerTurretBig.bmp");
+	GetAnimator()->CreateAnim(L"Gaster", m_pTex, Vec2(0.f, 0.f), Vec2(48.f * 2, 57.f * 2), Vec2(48.f * 2, 0.f), 7, m_shotDelay / 7);
 	GetAnimator()->PlayAnim(L"Gaster", false);
+
 #pragma endregion
 }
 
@@ -46,6 +48,7 @@ void Gaster::Update()
 		pRazerScale.y = Core::GetInst()->GetResolution().y;
 		pRazerPos.y = Core::GetInst()->GetResolution().y / 2;
 		pRazer->SetPos(pRazerPos);
+		pRazerScale.x /= 2;
 		pRazer->SetScale(pRazerScale);
 		pRazer->SetName(L"Boss_Razer");
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pRazer, OBJECT_GROUP::MONSTER);
@@ -79,33 +82,33 @@ void Gaster::Render(HDC _dc)
 			, (int)(vPos.y - vScale.y / 2)
 			, Width, Height, m_pTex->GetDC()
 			, 0, 0, Width, Height, RGB(255, 0, 255));*/
-	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
-	//TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2)-3, (int)(vPos.y - vScale.y / 2)-3, Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 0, 255));
+			//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
+			//TransparentBlt(_dc, (int)(vPos.x - vScale.x / 2)-3, (int)(vPos.y - vScale.y / 2)-3, Width, Height, m_pTex->GetDC(), 0, 0, Width, Height, RGB(255, 0, 255));
 
-	//PEN_TYPE ePen = PEN_TYPE::RED;
-	//BRUSH_TYPE eBrush = BRUSH_TYPE::RED;
-	//if (m_showRazer)
-	//{
-	//	/*RECT_RENDER(vPos.x, vPos.y
-	//		,vScale.x
-	//		, Core::GetInst()->GetResolution().y * 100
-	//		, _dc
-	//	);*/
-	//	
+			//PEN_TYPE ePen = PEN_TYPE::RED;
+			//BRUSH_TYPE eBrush = BRUSH_TYPE::RED;
+			//if (m_showRazer)
+			//{
+			//	/*RECT_RENDER(vPos.x, vPos.y
+			//		,vScale.x
+			//		, Core::GetInst()->GetResolution().y * 100
+			//		, _dc
+			//	);*/
+			//	
 
-	//	RECT_RENDER(vPos.x, vPos.y
-	//		, m_vDir.x == 0.f ? vScale.x : Core::GetInst()->GetResolution().x * 500
-	//		, m_vDir.y == 0.f ? vScale.y : Core::GetInst()->GetResolution().y * 500
-	//		, _dc
-	//	);
-	//}
-	//SelectGDI pen(_dc, ePen);
-	//SelectGDI brush(_dc, eBrush);
-	//RECT_RENDER(vPos.x, vPos.y
-	//	, vScale.x
-	//	, Core::GetInst()->GetResolution().y * 100
-	//	, _dc
-	//);
+			//	RECT_RENDER(vPos.x, vPos.y
+			//		, m_vDir.x == 0.f ? vScale.x : Core::GetInst()->GetResolution().x * 500
+			//		, m_vDir.y == 0.f ? vScale.y : Core::GetInst()->GetResolution().y * 500
+			//		, _dc
+			//	);
+			//}
+			//SelectGDI pen(_dc, ePen);
+			//SelectGDI brush(_dc, eBrush);
+			//RECT_RENDER(vPos.x, vPos.y
+			//	, vScale.x
+			//	, Core::GetInst()->GetResolution().y * 100
+			//	, _dc
+			//);
 
 
 	Component_Render(_dc);

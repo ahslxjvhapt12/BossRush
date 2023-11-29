@@ -11,7 +11,6 @@ Monster::Monster()
 	, m_fDir(1.f) // 오른쪽부터 이동
 	, m_iHp(5)
 {
-	CreateCollider();
 }
 
 Monster::~Monster()

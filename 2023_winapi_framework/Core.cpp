@@ -7,6 +7,8 @@
 #include "ResMgr.h"
 #include "CollisionMgr.h"
 #include "EventMgr.h"
+#include <time.h>
+
 bool Core::Init(HWND _hWnd, POINT _ptResolution)
 {
 	// === 변수 초기화 === 
@@ -14,6 +16,7 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 	m_ptResolution = _ptResolution;
 	m_hbackDC = 0;
 	m_hbackbit = 0;
+	srand((unsigned int)time(NULL));
 
 
 	// 더블버퍼링

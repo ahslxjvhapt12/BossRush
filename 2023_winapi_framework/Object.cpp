@@ -42,7 +42,7 @@ void Object::CreateAnimator()
 void Object::CreateStateMachine()
 {
 	m_pStateMachine = new StateMachine;
-	m_pStateMachine->SetOnwer(this);
+	m_pStateMachine->m_pOwner = this;
 }
 
 void Object::Update()
