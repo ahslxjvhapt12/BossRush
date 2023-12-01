@@ -21,7 +21,6 @@ private:
 	Vec2 m_vDir;
 	float m_shotTime;
 	float m_shotDelay;
-	bool m_showRazer;
 	Texture* m_pTex;
 };
 

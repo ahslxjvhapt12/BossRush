@@ -14,6 +14,8 @@ Razer::Razer()
 
 {
 	CreateCollider();
+	
+	GetCollider()->SetScale(Vec2(50.f, 1000.f));
 }
 
 Razer::~Razer()
@@ -32,10 +34,10 @@ void Razer::Update()
 	void Razer::Render(HDC _dc)
 {
 	Vec2 vPos = GetPos();
-	Vec2 vScale = GetScale();
+	Vec2 vScale = GetCollider()->GetScale();
 
-	PEN_TYPE ePen = PEN_TYPE::RED;
-	BRUSH_TYPE eBrush = BRUSH_TYPE::RED;
+	PEN_TYPE ePen = PEN_TYPE::GREEN;
+	BRUSH_TYPE eBrush = BRUSH_TYPE::GREEN;
 
 	SelectGDI pen(_dc, ePen);
 	SelectGDI brush(_dc, eBrush);

@@ -17,7 +17,6 @@
 Gaster::Gaster()
 	:m_shotTime(0)
 	, m_shotDelay(3)
-	, m_showRazer(false)
 	, m_pTex(nullptr)
 	, m_vDir(0.f, 1.f)
 {
@@ -31,6 +30,11 @@ Gaster::Gaster()
 	GetAnimator()->PlayAnim(L"Gaster", false);
 
 #pragma endregion
+
+
+#pragma region SpawnLaser
+
+#pragma endregion
 }
 
 Gaster::~Gaster()
@@ -41,7 +45,6 @@ void Gaster::Update()
 {
 	if (m_shotTime >= m_shotDelay)
 	{
-		m_showRazer = false;
 		Razer* pRazer = new Razer;
 		Vec2 pRazerPos = GetPos();
 		Vec2 pRazerScale = GetScale();
@@ -62,10 +65,6 @@ void Gaster::Update()
 
 	m_shotTime += fDT;
 
-	if ((int)m_shotTime % 2 != 0)
-		m_showRazer = true;
-	else
-		m_showRazer = false;
 	GetAnimator()->Update();
 }
 

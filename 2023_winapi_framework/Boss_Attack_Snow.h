@@ -12,5 +12,10 @@ public:
 	void Update() override;
 	void Render(HDC _dc) override;
 	void OnExit() override;
+public:
+	void CreateSnow();
+private:
+	float m_lifetTime;
+	int count;
 };
 

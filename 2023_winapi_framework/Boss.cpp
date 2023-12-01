@@ -13,6 +13,7 @@
 #include "SceneMgr.h"
 #include "Scene.h"
 #include "Boss_Attack_Snow.h"
+#include "Boss_DestructionRay.h"
 
 Boss::Boss()
 	: m_pTex(nullptr)
@@ -42,8 +43,12 @@ Boss::Boss()
 	GetStateMachine()->AddState(L"Idle", Idle);
 
 	Boss_Attack_Snow* AttackSnow = new Boss_Attack_Snow;
+	Boss_DestructionRay* DestructionRay = new Boss_DestructionRay;
+
 	GetStateMachine()->AddState(L"AttackSnow", AttackSnow);
-	GetStateMachine()->ChangeState(L"AttackSnow");
+	GetStateMachine()->AddState(L"DestructionRay", DestructionRay);
+
+	GetStateMachine()->ChangeState(L"DestructionRay");
 	//state->OnEnter();
 #pragma endregion
 

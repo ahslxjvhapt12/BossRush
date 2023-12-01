@@ -47,8 +47,6 @@ void Object::CreateStateMachine()
 
 void Object::Update()
 {
-	if (m_pStateMachine)
-		m_pStateMachine->Update();
 	//Vec2 vPos = m_obj.GetPos();
 
 //	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
@@ -61,6 +59,9 @@ void Object::FinalUpdate()
 {
 	if (m_pCollider)
 		m_pCollider->FinalUpdate();
+
+	if (m_pStateMachine != nullptr)
+		m_pStateMachine->Update();
 }
 
 void Object::Render(HDC _dc)

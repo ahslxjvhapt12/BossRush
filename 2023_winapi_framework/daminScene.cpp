@@ -13,18 +13,20 @@
 
 void daminScene::Init()
 {
+
+	// 사운드 세팅
+	ResMgr::GetInst()->LoadSound(L"SnowSong", L"Sound\\SnowSong.wav", false);
+	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
+	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
+	ResMgr::GetInst()->LoadSound(L"Laser", L"Sound\\razer.wav", false);
+	//ResMgr::GetInst()->Play(L"BGM");
+
 	Object* pObj = new Player;
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
 	pObj->SetScale(Vec2(128.f, 128.f));
 	pObj->SetName(L"player");
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
-	Gaster* razer = new Gaster();
-	//razer->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	razer->SetPos(Vec2(50, 50));
-	razer->SetScale(Vec2(100.f, 100.f));
-	razer->SetName(L"Boss_Razer");
-	AddObject(razer, OBJECT_GROUP::BULLET);
 
 	Object* boss = new Boss;
 	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));
@@ -65,10 +67,7 @@ void daminScene::Init()
 		AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	}
 
-	// 사운드 세팅
-	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
-	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
-	ResMgr::GetInst()->Play(L"BGM");
+	
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);

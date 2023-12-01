@@ -173,6 +173,7 @@
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Boss_Attack_Snow.h" />
+    <ClInclude Include="Boss_DestructionRay.h" />
     <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Collider.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Boss_Attack_Snow.cpp" />
+    <ClCompile Include="Boss_DestructionRay.cpp" />
     <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Collider.cpp" />

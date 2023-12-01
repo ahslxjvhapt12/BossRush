@@ -190,6 +190,9 @@
     <ClInclude Include="Boss_Attack_Snow.h">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClInclude>
+    <ClInclude Include="Boss_DestructionRay.h">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -299,6 +302,9 @@
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClCompile>
     <ClCompile Include="Boss_Attack_Snow.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_DestructionRay.cpp">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClCompile>
   </ItemGroup>

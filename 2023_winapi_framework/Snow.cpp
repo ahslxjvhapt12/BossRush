@@ -17,8 +17,8 @@ Snow::Snow()
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Snow", L"Texture\\SnowFlake.bmp");
 
-	m_Yspeed = rand() % 110 + 30;
-	m_Xspeed = rand() % 80 + 20;
+	m_Yspeed = rand() % 80 + 30;
+	m_Xspeed = rand() % 65 + 20;
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f, 20.f));
 }
