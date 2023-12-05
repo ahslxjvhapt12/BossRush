@@ -6,9 +6,14 @@
 #include "Scene.h"
 #include "ResMgr.h"
 #include "Core.h"
+#include "TimeMgr.h"
+#include "StateMachine.h"
 
 Boss_DestructionRay::Boss_DestructionRay()
-	:m_player(nullptr)
+	: m_player(nullptr)
+	, m_curTime(0)
+	, m_count(4)
+	, m_followcount(3)
 {
 
 }
@@ -19,6 +24,9 @@ Boss_DestructionRay::~Boss_DestructionRay()
 
 void Boss_DestructionRay::OnEnter()
 {
+	m_curTime = 0;
+	m_count = 4;
+	m_followcount = 3;
 	ResMgr::GetInst()->Play(L"Laser");
 
 	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
@@ -37,6 +45,39 @@ void Boss_DestructionRay::OnEnter()
 
 void Boss_DestructionRay::Update()
 {
+	m_curTime += fDT;
+	if(m_curTime >= 4.f && m_count > 0)
+	{
+		int spawnCount = m_count % 2 == 0 ? 12 : 13;
+		Vec2 vResolution = Core::GetInst()->GetResolution();
+		float xDist = vResolution.x / spawnCount;
+		for (int i = 0; i <= spawnCount; i++)
+			CreateRay(Vec2(xDist * i, 50.f));
+		m_curTime = 0;
+		m_count--;
+		return;
+	}
+
+	if (m_count > 0)
+		return;
+
+	for(auto objects : m_rayVec)
+	{
+		if (m_curTime >= 2.f)
+			continue;
+		objects->SetPos(Vec2(m_player->GetPos().x, 50.f));
+	}
+
+	if(m_curTime >= 4.f && m_followcount > 0)
+	{
+		CreateRay(Vec2(m_player->GetPos().x, 50.f));
+		m_curTime = 0;
+		m_followcount--;
+	}
+	else if(m_followcount <= 0)
+	{
+		GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+	}
 }
 
 void Boss_DestructionRay::Render(HDC _dc)
@@ -53,4 +94,5 @@ void Boss_DestructionRay::CreateRay(Vec2 Pos)
 
 	gaster->SetPos(Vec2(Pos.x, 50.f));
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaster, OBJECT_GROUP::MONSTER);
+	m_rayVec.push_back(gaster);
 }

@@ -193,6 +193,7 @@
     <ClInclude Include="Boss_DestructionRay.h">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClInclude>
+    <ClInclude Include="TimeLine.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -307,5 +308,6 @@
     <ClCompile Include="Boss_DestructionRay.cpp">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClCompile>
+    <ClCompile Include="TimeLine.cpp" />
   </ItemGroup>
 </Project>

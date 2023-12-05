@@ -9,6 +9,7 @@
 #include "TimeMgr.h"
 #include "StateMachine.h"
 #include "SceneMgr.h"
+#include "EventMgr.h"
 
 Boss_Attack_Snow::Boss_Attack_Snow()
 	:m_lifetTime(0)
@@ -22,6 +23,10 @@ Boss_Attack_Snow::~Boss_Attack_Snow()
 
 void Boss_Attack_Snow::OnEnter()
 {
+	m_snowVec.clear();
+	m_lifetTime = 0;
+	count = 3;
+
 	ResMgr::GetInst()->Play(L"SnowSong");
 }
 
@@ -31,14 +36,20 @@ void Boss_Attack_Snow::Update()
 		CreateSnow();*/
 
 	m_lifetTime -= fDT;
-	if(m_lifetTime <= 0)
+	if(m_lifetTime <= 0 && count > 0)
 	{
 		count--;
 		CreateSnow();
 		m_lifetTime = 3;
-		if(count <= 0)
-			GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+	}
 
+	if(m_snowVec.size() < 5)
+	{
+		for(auto snow : m_snowVec)
+		{
+			EventMgr::GetInst()->DeleteObject(snow);
+		}
+			GetOwner()->GetStateMachine()->ChangeState(L"Idle");
 	}
 }
 
@@ -53,7 +64,7 @@ void Boss_Attack_Snow::OnExit()
 void Boss_Attack_Snow::CreateSnow()
 {
 	LONG maxXpos = Core::GetInst()->GetResolution().x;
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		float xPos = rand() % maxXpos;
 		Object* snow = new Snow;
@@ -61,5 +72,6 @@ void Boss_Attack_Snow::CreateSnow()
 		snow->SetScale(Vec2(30.f, 30.f));
 		snow->SetName(L"Snow");
 		SceneMgr::GetInst()->GetCurScene()->AddObject(snow, OBJECT_GROUP::MONSTER);
+		m_snowVec.push_back(snow);
 	}
 }

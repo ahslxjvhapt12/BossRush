@@ -69,10 +69,14 @@ State* StateMachine::FindState(const wstring& _stateName)
 
 void StateMachine::ChangeRandomState()
 {
-	wstring _stateName = m_stateNames[rand() % m_stateNames.size() - 1];
+	wstring _stateName = m_stateNames[rand() % m_stateNames.size()];
 
-	while (_stateName == m_pCurStateName)
-		_stateName = m_stateNames[rand() % m_stateNames.size() - 1];
+	while (true)
+	{
+		_stateName = m_stateNames[rand() % m_stateNames.size()];
+		if (_stateName != m_pCurStateName)
+			break;
+	}
 
 	ChangeState(_stateName);
 }

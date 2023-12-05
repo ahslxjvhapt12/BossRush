@@ -17,5 +17,6 @@ public:
 private:
 	float m_lifetTime;
 	int count;
+	vector<Object*> m_snowVec;
 };
 

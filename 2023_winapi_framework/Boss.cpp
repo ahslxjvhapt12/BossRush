@@ -48,7 +48,7 @@ Boss::Boss()
 	GetStateMachine()->AddState(L"AttackSnow", AttackSnow);
 	GetStateMachine()->AddState(L"DestructionRay", DestructionRay);
 
-	GetStateMachine()->ChangeState(L"DestructionRay");
+	GetStateMachine()->ChangeState(L"Idle");
 	//state->OnEnter();
 #pragma endregion
 

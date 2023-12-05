@@ -6,8 +6,11 @@
 #include "SceneMgr.h"
 #include "Boss_Idle.h"
 #include "State.h"
+#include "TimeMgr.h"
+#include "StateMachine.h"
 
 Boss_Idle::Boss_Idle()
+	:m_curTime(0)
 {
 }
 
@@ -22,7 +25,9 @@ void Boss_Idle::OnEnter()
 
 void Boss_Idle::Update()
 {
-
+	m_curTime += fDT;
+	if (m_curTime >= 3.f)
+		GetOwner()->GetStateMachine()->ChangeRandomState();
 }
 
 void Boss_Idle::Render(HDC _dc)

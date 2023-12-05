@@ -16,5 +16,9 @@ private:
 	void CreateRay(Vec2 Pos);
 private:
 	Object* m_player;
+	float m_curTime;
+	int m_count;
+	int m_followcount;
+	vector<Object*> m_rayVec;
 };
 
