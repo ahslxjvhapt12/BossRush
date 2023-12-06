@@ -46,7 +46,7 @@ void Boss_DestructionRay::OnEnter()
 void Boss_DestructionRay::Update()
 {
 	m_curTime += fDT;
-	if(m_curTime >= 4.f && m_count > 0)
+	if(m_curTime >= 3.f && m_count > 0)
 	{
 		int spawnCount = m_count % 2 == 0 ? 12 : 13;
 		Vec2 vResolution = Core::GetInst()->GetResolution();
@@ -60,24 +60,33 @@ void Boss_DestructionRay::Update()
 
 	if (m_count > 0)
 		return;
-
+	//std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
+	//const vector<Object*>& player = pCurScene->GetGroupObject(OBJECT_GROUP::PLAYER);
+	//char str[10];
+	/*wchar_t str[10];
+	wsprintf(str,str.length(),10);
+	OutputDebugString("%d %d,m_count" );*/
 	for(auto objects : m_rayVec)
 	{
-		if (m_curTime >= 2.f)
+		if (m_curTime >= 1.f)
 			continue;
 		objects->SetPos(Vec2(m_player->GetPos().x, 50.f));
 	}
 
 	if(m_curTime >= 4.f && m_followcount > 0)
 	{
+		//wchar_t buf[20] = {}; //temporary buffer
+		//swprintf(buf, L"%d","aaaa"); // convert
+		//OutputDebugString(buf); // print
+
 		CreateRay(Vec2(m_player->GetPos().x, 50.f));
 		m_curTime = 0;
 		m_followcount--;
 	}
 	else if(m_curTime >= 4.f && m_followcount <= 0)
 	{
-		//GetOwner()->GetStateMachine()->ChangeState(L"Idle");
 		GetOwner()->GetStateMachine()->ChangeRandomState();
+		//GetOwner()->GetStateMachine()->ChangeState(L"Idle");
 
 	}
 }

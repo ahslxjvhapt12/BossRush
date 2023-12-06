@@ -145,10 +145,10 @@ void Player::Update()
 
 void Player::CreateBullet()
 {
-	Bullet* pBullet = new Bullet;
-	Vec2 vBulletPos = GetPos();
+	Bullet* pBullet = new Bullet();
+	//Vec2 vBulletPos = GetPos();
 	//vBulletPos.y -= GetScale().y / 2.f;
-	pBullet->SetPos(vBulletPos);
+	pBullet->SetPos(GetPos());
 	pBullet->SetScale(Vec2(25.f, 25.f));
 
 	switch (m_playerDir)

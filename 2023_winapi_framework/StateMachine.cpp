@@ -69,7 +69,7 @@ State* StateMachine::FindState(const wstring& _stateName)
 
 void StateMachine::ChangeRandomState()
 {
-	int size = m_stateNames.size() + 1;
+	int size = m_stateNames.size();
 	wstring _stateName = m_stateNames[rand() % size];
 	
 

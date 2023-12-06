@@ -13,7 +13,8 @@ Bullet::Bullet()
 	CreateCollider();
 }
 
-Bullet::~Bullet()
+
+	Bullet::~Bullet()
 {
 }
 

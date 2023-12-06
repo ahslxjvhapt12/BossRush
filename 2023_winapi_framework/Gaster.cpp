@@ -16,7 +16,7 @@
 
 Gaster::Gaster()
 	:m_shotTime(0)
-	, m_shotDelay(3)
+	, m_shotDelay(2)
 	, m_pTex(nullptr)
 	, m_vDir(0.f, 1.f)
 {

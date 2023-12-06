@@ -26,9 +26,6 @@ Boss::Boss()
 	m_pTex = ResMgr::GetInst()->TexLoad(L"BossHit", L"Texture\\cylinderhit.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Boss", L"Texture\\cylinder.bmp");
 
-	Vec2 vPos = GetPos();
-	Vec2 vScale = GetScale();
-
 #pragma region 콜라이더
 	CreateCollider();
 	GetCollider()->SetOffSetPos(Vec2(40.f,89.f));
@@ -39,16 +36,17 @@ Boss::Boss()
 	CreateStateMachine();
 	//GetStateMachine()->SetOnwer(this);
 
-	Boss_Idle* Idle = new Boss_Idle;
-	GetStateMachine()->AddState(L"Idle", Idle);
+	//Boss_Idle* Idle = new Boss_Idle;
+	//GetStateMachine()->AddState(L"Idle", Idle);
 
 	Boss_Attack_Snow* AttackSnow = new Boss_Attack_Snow;
 	Boss_DestructionRay* DestructionRay = new Boss_DestructionRay;
 
 	GetStateMachine()->AddState(L"AttackSnow", AttackSnow);
 	GetStateMachine()->AddState(L"DestructionRay", DestructionRay);
-
-	GetStateMachine()->ChangeState(L"Idle");
+	
+	GetStateMachine()->ChangeRandomState();
+	//GetStateMachine()->ChangeState(L"Idle");
 	//state->OnEnter();
 #pragma endregion
 

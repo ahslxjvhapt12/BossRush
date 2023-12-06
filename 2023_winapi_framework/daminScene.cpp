@@ -16,6 +16,7 @@
 
 void daminScene::Init()
 {
+
 	Object* pBG = new BackGround;
 	pBG->SetPos(Vec2(100.f, 100.f));
 	pBG->SetScale(Vec2(200.f, 200.f));
@@ -64,31 +65,12 @@ void daminScene::Init()
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
 
-	Vec2 vResolution = Core::GetInst()->GetResolution();
-	Monster* pMonster = nullptr;
-	int iMonster = 10;		// 몬스터 수 
-	float fMoveDist = 30.f; // 움직일 거리
-	float fMonsterScale = 50.f; // 몬스터 크기
-	// 해상도x - ( 움직일 거리 + 오브젝트 크기 /2) * 2 / 몬스터수 -1 
-	float fTerm = (vResolution.x - (fMoveDist + fMonsterScale / 2.f) * 2)
-		/ (float)(iMonster - 1);
-	for (int i = 0; i < iMonster; ++i)
-	{
-		pMonster = new Monster;
-		pMonster->SetPos(Vec2(
-			(fMoveDist + fMonsterScale / 2.f) + i * fTerm
-			, 300.f));
-		pMonster->SetScale(Vec2(fMonsterScale, fMonsterScale));
-		pMonster->SetCenterPos(pMonster->GetPos());
-		pMonster->SetMoveDis(fMoveDist);
-		AddObject(pMonster, OBJECT_GROUP::MONSTER);
-	}
 
-	
 
 	// 충돌체크해야되는것들을 설정하자.
-	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
-	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::MONSTER, OBJECT_GROUP::PLAYER);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::MONSTER, OBJECT_GROUP::BULLET);
+	//CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::MONSTER, OBJECT_GROUP::PLAYER);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::MONSTER);
 }
 
 void daminScene::Update()

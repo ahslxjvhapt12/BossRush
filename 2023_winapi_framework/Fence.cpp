@@ -7,10 +7,10 @@
 Fence::Fence()
 	: m_pTex(nullptr)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\YB.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Fence", L"Texture\\YB.bmp");
 
-	CreateCollider();
-	GetCollider()->SetScale(Vec2(32.f, 32.f));
+	//CreateCollider();
+	//GetCollider()->SetScale(Vec2(32.f, 32.f));
 }
 
 Fence::~Fence()

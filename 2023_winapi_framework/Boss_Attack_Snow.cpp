@@ -40,19 +40,14 @@ void Boss_Attack_Snow::Update()
 	{
 		count--;
 		CreateSnow();
-		m_lifetTime = 3;
+		m_lifetTime = 2;
+		if(count <= 0)
+			m_lifetTime = 10;
 		return;
 	}
-	for (auto snow : m_snowVec)
-	{
-		EventMgr::GetInst()->DeleteObject(snow);
-	}
 	//GetOwner()->GetStateMachine()->ChangeState(L"Idle");
-	GetOwner()->GetStateMachine()->ChangeRandomState();
-	if(m_snowVec.size() < 5)
-	{
-		
-	}
+	if(count <= 0 && m_lifetTime <= 0)
+		GetOwner()->GetStateMachine()->ChangeRandomState();
 }
 
 void Boss_Attack_Snow::Render(HDC _dc)
@@ -61,6 +56,12 @@ void Boss_Attack_Snow::Render(HDC _dc)
 
 void Boss_Attack_Snow::OnExit()
 {
+	/*for (auto snow : m_snowVec)
+	{
+		if (snow == nullptr)
+			return;
+		EventMgr::GetInst()->DeleteObject(snow);
+	}*/
 }
 
 void Boss_Attack_Snow::CreateSnow()

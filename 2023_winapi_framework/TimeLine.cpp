@@ -16,11 +16,13 @@ TimeLine::~TimeLine()
 
 void TimeLine::RePlayTimeLine()
 {
-	curRepeatCount = FindTimeLine(m_TimeIndex[curIndex])->count;
 }
 
 void TimeLine::UpdateTimeLine()
 {
+	if(curIndex == 0 && curRepeatCount == 0)
+		curRepeatCount = FindTimeLine(m_TimeIndex[curIndex])->count;
+
 	if (FindTimeLine(m_TimeIndex[curIndex]) == nullptr)
 		return;
 
