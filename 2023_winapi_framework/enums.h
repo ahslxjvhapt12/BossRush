@@ -34,6 +34,9 @@ enum class OBJECT_GROUP
 	PLAYER,
 	BULLET,
 	MONSTER,
+	BACKGROUND,
+	WALL,
+	HOLE,
 	END = 30
 };
 

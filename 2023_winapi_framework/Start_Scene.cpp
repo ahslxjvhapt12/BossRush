@@ -3,17 +3,36 @@
 #include "Object.h"
 #include "Core.h"
 #include "Player.h"
+#include "BackGround.h"
+#include "Wall.h"
 #include "Monster.h"
 #include "KeyMgr.h"
+#include "Fence.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 
 void Start_Scene::Init()
 {
-	Object* pObj = new Player;
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(200.f, 200.f));
-	AddObject(pObj, OBJECT_GROUP::PLAYER);
+	// 
+	Object* pBG = new BackGround;
+	pBG->SetPos(Vec2(100.f, 100.f));
+	pBG->SetScale(Vec2(200.f, 200.f));
+	AddObject(pBG, OBJECT_GROUP::BACKGROUND);
+
+	Object* pWall = new Wall;
+	pWall->SetPos(Vec2(100.f, 100.f));
+	pWall->SetScale(Vec2(200.f, 200.f));
+	AddObject(pWall, OBJECT_GROUP::WALL);
+
+	Fence* pFence = new Fence;
+	pFence->SetPos(Vec2(100.f, 100.f));
+	pFence->SetScale(Vec2(200.f, 200.f));
+	AddObject(pFence, OBJECT_GROUP::HOLE);
+
+	//Object* pObj = new Player;
+	//pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
+	//pObj->SetScale(Vec2(200.f, 200.f));
+	//AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
 
@@ -36,12 +55,18 @@ void Start_Scene::Init()
 	//	AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	//}
 	// 사운드 세팅
+
+
+
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->Play(L"BGM");
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::WALL);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::WALL);
+	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::HOLE);
 }
 
 void Start_Scene::Update()

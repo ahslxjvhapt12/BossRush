@@ -18,5 +18,6 @@ private:
 	PLAYER_DIR m_playerDir;
 	PLAYER_STATE m_playerState;
 	float m_shootRemainTime;
+	float m_shootDelay;
 	bool m_onShoot;
 };

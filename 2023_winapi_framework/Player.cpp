@@ -17,6 +17,7 @@ Player::Player()
 	, m_shootRemainTime(0.f)
 	, m_onShoot(false)
 	, m_playerState(PLAYER_STATE::IDLE)
+	, m_shootDelay(0.f)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
@@ -101,7 +102,7 @@ void Player::Update()
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
 		m_playerDir = PLAYER_DIR::RIGHT;
- 		m_playerState = PLAYER_STATE::WALK;
+		m_playerState = PLAYER_STATE::WALK;
 		vPos.x += 100.f * fDT;
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))
@@ -121,12 +122,18 @@ void Player::Update()
 
 #pragma region น฿ป็
 
-	if (KEY_DOWN(KEY_TYPE::SPACE))
+	if (KEY_PRESS(KEY_TYPE::SPACE))
 	{
-		CreateBullet();
-		ResMgr::GetInst()->Play(L"Shoot");
-		m_playerState = PLAYER_STATE::SHOOT;
-		m_shootRemainTime = 0.5f;
+		if (m_shootDelay <= 0) {
+			CreateBullet();
+			ResMgr::GetInst()->Play(L"Shoot");
+			m_playerState = PLAYER_STATE::SHOOT;
+			m_shootRemainTime = 0.5f;
+			m_shootDelay = 0.1f;
+		}
+		else {
+			m_shootDelay -= fDT;
+		}
 	}
 
 #pragma endregion
@@ -172,7 +179,7 @@ void Player::AnimationStateControl()
 	{
 		if (m_playerState == PLAYER_STATE::SHOOT)
 		{
-	 		GetAnimator()->PlayAnim(L"Shoot_Up", true);
+			GetAnimator()->PlayAnim(L"Shoot_Up", true);
 		}
 		else if (m_playerState == PLAYER_STATE::WALK)
 		{
