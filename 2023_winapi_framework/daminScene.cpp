@@ -10,9 +10,26 @@
 #include "ResMgr.h"
 #include "Gaster.h"
 #include "Snow.h"
+#include "BackGround.h"
+#include "Wall.h"
+#include "Fence.h"
 
 void daminScene::Init()
 {
+	Object* pBG = new BackGround;
+	pBG->SetPos(Vec2(100.f, 100.f));
+	pBG->SetScale(Vec2(200.f, 200.f));
+	AddObject(pBG, OBJECT_GROUP::BACKGROUND);
+
+	Object* pWall = new Wall;
+	pWall->SetPos(Vec2(100.f, 100.f));
+	pWall->SetScale(Vec2(200.f, 200.f));
+	AddObject(pWall, OBJECT_GROUP::WALL);
+
+	Fence* pFence = new Fence;
+	pFence->SetPos(Vec2(100.f, 100.f));
+	pFence->SetScale(Vec2(200.f, 200.f));
+	AddObject(pFence, OBJECT_GROUP::HOLE);
 
 	// 사운드 세팅
 	ResMgr::GetInst()->LoadSound(L"SnowSong", L"Sound\\SnowSong.wav", false);
