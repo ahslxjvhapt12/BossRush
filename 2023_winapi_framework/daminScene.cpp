@@ -13,6 +13,7 @@
 
 void daminScene::Init()
 {
+
 	// 사운드 세팅
 	ResMgr::GetInst()->LoadSound(L"SnowSong", L"Sound\\SnowSong.wav", false);
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);

@@ -74,9 +74,11 @@ void Boss_DestructionRay::Update()
 		m_curTime = 0;
 		m_followcount--;
 	}
-	else if(m_followcount <= 0)
+	else if(m_curTime >= 4.f && m_followcount <= 0)
 	{
-		GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+		//GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+		GetOwner()->GetStateMachine()->ChangeRandomState();
+
 	}
 }
 

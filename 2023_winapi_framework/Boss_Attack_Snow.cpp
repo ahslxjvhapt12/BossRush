@@ -41,15 +41,17 @@ void Boss_Attack_Snow::Update()
 		count--;
 		CreateSnow();
 		m_lifetTime = 3;
+		return;
 	}
-
+	for (auto snow : m_snowVec)
+	{
+		EventMgr::GetInst()->DeleteObject(snow);
+	}
+	//GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+	GetOwner()->GetStateMachine()->ChangeRandomState();
 	if(m_snowVec.size() < 5)
 	{
-		for(auto snow : m_snowVec)
-		{
-			EventMgr::GetInst()->DeleteObject(snow);
-		}
-			GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+		
 	}
 }
 
