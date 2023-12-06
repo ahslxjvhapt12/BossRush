@@ -31,12 +31,12 @@ enum class KEY_TYPE
 enum class OBJECT_GROUP
 {
 	DEFAULT,
-	PLAYER,
-	BULLET,
-	MONSTER,
 	BACKGROUND,
 	WALL,
 	HOLE,
+	PLAYER,
+	BULLET,
+	MONSTER,
 	END = 30
 };
 

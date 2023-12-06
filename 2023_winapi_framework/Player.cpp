@@ -18,6 +18,9 @@ Player::Player()
 	, m_onShoot(false)
 	, m_playerState(PLAYER_STATE::IDLE)
 	, m_shootDelay(0.f)
+	, m_dashCool(0.f)
+	, movementSpeed(100.f)
+	, dashSpeed(200.f)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
@@ -73,9 +76,12 @@ Player::~Player()
 void Player::Update()
 {
 	Vec2 vPos = GetPos();
+	float curSpeed = movementSpeed;
+
+	if (m_onDash)
+		curSpeed = dashSpeed;
 
 	m_playerState = PLAYER_STATE::IDLE;
-
 	if (m_onShoot == true)
 	{
 		m_playerState = PLAYER_STATE::SHOOT;
@@ -97,25 +103,25 @@ void Player::Update()
 	{
 		m_playerDir = PLAYER_DIR::LEFT;
 		m_playerState = PLAYER_STATE::WALK;
-		vPos.x -= 100.f * fDT;
+		vPos.x -= curSpeed * fDT;
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
 		m_playerDir = PLAYER_DIR::RIGHT;
 		m_playerState = PLAYER_STATE::WALK;
-		vPos.x += 100.f * fDT;
+		vPos.x += curSpeed * fDT;
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))
 	{
 		m_playerDir = PLAYER_DIR::UP;
 		m_playerState = PLAYER_STATE::WALK;
-		vPos.y -= 100.f * fDT;
+		vPos.y -= curSpeed * fDT;
 	}
 	if (KEY_PRESS(KEY_TYPE::DOWN))
 	{
 		m_playerDir = PLAYER_DIR::DOWN;
 		m_playerState = PLAYER_STATE::WALK;
-		vPos.y += 100.f * fDT;
+		vPos.y += curSpeed * fDT;
 	}
 
 #pragma endregion
@@ -124,10 +130,11 @@ void Player::Update()
 
 	if (KEY_PRESS(KEY_TYPE::SPACE))
 	{
-		if (m_shootDelay <= 0) {
+		if (m_shootDelay <= 0.f) {
 			CreateBullet();
 			ResMgr::GetInst()->Play(L"Shoot");
 			m_playerState = PLAYER_STATE::SHOOT;
+			m_onShoot = true;
 			m_shootRemainTime = 0.5f;
 			m_shootDelay = 0.1f;
 		}
@@ -137,6 +144,20 @@ void Player::Update()
 	}
 
 #pragma endregion
+
+#pragma region ´ë½¬
+	if (KEY_PRESS(KEY_TYPE::LSHIFT)) {
+		if (m_dashCool < 0.f) {
+			Dash();
+			m_dashCool = 0.5f;
+			m_onDash = true;
+		}
+		else {
+			m_dashCool -= fDT;
+		}
+	}
+#pragma endregion
+
 
 	AnimationStateControl();
 	SetPos(vPos);
@@ -169,6 +190,11 @@ void Player::CreateBullet()
 
 	pBullet->SetName(L"Player_Bullet");
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+}
+
+void Player::Dash()
+{
+	// tlqkf
 }
 
 void Player::AnimationStateControl()
