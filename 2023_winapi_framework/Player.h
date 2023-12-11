@@ -21,8 +21,10 @@ private:
 	float m_shootRemainTime;
 	float m_shootDelay;
 	float m_dashCool;
-	float movementSpeed;
-	float dashSpeed;
+	float m_movementSpeed;
+	float m_dashSpeed;
 	bool m_onShoot;
 	bool m_onDash;
+
+	float m_hp;
 };

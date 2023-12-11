@@ -19,8 +19,8 @@ Player::Player()
 	, m_playerState(PLAYER_STATE::IDLE)
 	, m_shootDelay(0.f)
 	, m_dashCool(0.f)
-	, movementSpeed(100.f)
-	, dashSpeed(200.f)
+	, m_movementSpeed(100.f)
+	, m_dashSpeed(200.f)
 {
 	//m_pTex = new Texture;
 	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
@@ -76,10 +76,10 @@ Player::~Player()
 void Player::Update()
 {
 	Vec2 vPos = GetPos();
-	float curSpeed = movementSpeed;
+	float curSpeed = m_movementSpeed;
 
 	if (m_onDash)
-		curSpeed = dashSpeed;
+		curSpeed = m_dashSpeed;
 
 	m_playerState = PLAYER_STATE::IDLE;
 	if (m_onShoot == true)

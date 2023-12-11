@@ -193,7 +193,19 @@
     <ClInclude Include="Boss_DestructionRay.h">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClInclude>
-    <ClInclude Include="TimeLine.h" />
+    <ClInclude Include="BackGround.h">
+      <Filter>Engine\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Fence.h">
+      <Filter>Engine\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Engine\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroScene.h">
+      <Filter>Engine\05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -308,6 +320,18 @@
     <ClCompile Include="Boss_DestructionRay.cpp">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClCompile>
-    <ClCompile Include="TimeLine.cpp" />
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Engine\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Fence.cpp">
+      <Filter>Engine\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Engine\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroScene.cpp">
+      <Filter>Engine\05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp" />
   </ItemGroup>
 </Project>

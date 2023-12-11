@@ -177,6 +177,7 @@
     <ClInclude Include="Boss_DestructionRay.h" />
     <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Core.h" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Fence.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gaster.h" />
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="Boss_DestructionRay.cpp" />
     <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Core.cpp" />
@@ -227,6 +230,7 @@
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="Fence.cpp" />
     <ClCompile Include="Gaster.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />

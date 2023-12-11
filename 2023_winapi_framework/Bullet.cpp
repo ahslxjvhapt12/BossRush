@@ -34,13 +34,13 @@ void Bullet::Update()
 	vPos.x += 500.f * fDT * m_vDir.x;
 	vPos.y += 500.f * fDT * m_vDir.y;
 
-	//if (vPos.y > Core::GetInst()->GetResolution().y || vPos.y < 0)
-	//	EventMgr::GetInst()->DeleteObject(this);
-	//if (vPos.x > Core::GetInst()->GetResolution().x || vPos.x < 0)
-	//	EventMgr::GetInst()->DeleteObject(this);
-	POINT ptResolution = Core::GetInst()->GetResolution();
-	if(vPos.x > ptResolution.x / 2 || vPos.x < 100.f || vPos.y > ptResolution.y / 2 || vPos.y < 100.f )
+	if (vPos.y > Core::GetInst()->GetResolution().y || vPos.y < 0)
 		EventMgr::GetInst()->DeleteObject(this);
+	if (vPos.x > Core::GetInst()->GetResolution().x || vPos.x < 0)
+		EventMgr::GetInst()->DeleteObject(this);
+	//POINT ptResolution = Core::GetInst()->GetResolution();
+	//if(vPos.x > ptResolution.x / 2 || vPos.x < 100.f || vPos.y > ptResolution.y / 2 || vPos.y < 100.f )
+	//	EventMgr::GetInst()->DeleteObject(this);
 
 	SetPos(vPos);
 }

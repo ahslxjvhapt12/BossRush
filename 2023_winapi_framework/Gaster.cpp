@@ -43,6 +43,7 @@ Gaster::~Gaster()
 
 void Gaster::Update()
 {
+	const vector<Object*>&  a = SceneMgr::GetInst()->GetCurScene()->GetGroupObject(OBJECT_GROUP::BULLET);
 	if (m_shotTime >= m_shotDelay)
 	{
 		Razer* pRazer = new Razer;

@@ -43,7 +43,7 @@ void Boss_Attack_Snow::Update()
 		m_lifetTime = 3;
 		return;
 	}
-	for (auto snow : m_snowVec)
+	for (auto& snow : m_snowVec)
 	{
 		EventMgr::GetInst()->DeleteObject(snow);
 	}
