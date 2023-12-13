@@ -20,24 +20,14 @@ Player::Player()
 	, m_shootDelay(0.f)
 	, m_dashCool(0.f)
 	, m_movementSpeed(100.f)
-	, m_dashSpeed(200.f)
+	, m_dashSpeed(500.f)
+	, m_dashRemainTime(0.f)
 {
-	//m_pTex = new Texture;
-	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
-	//strFilePath += L"Texture\\plane.bmp";
-	//m_pTex->Load(strFilePath);
-	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\Player\\PlayerAnimationSheet.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(32.f, 32.f));
-	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
 
 	CreateAnimator();
-	//GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Back", m_pTex, Vec2(0.f, 100.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Left", m_pTex, Vec2(0.f, 0.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Right", m_pTex, Vec2(0.f, 50.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	//GetAnimator()->CreateAnim(L"Jiwoo_Attack", m_pTex, Vec2(0.f, 200.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 
 	// Idle
 	GetAnimator()->CreateAnim(L"Idle_Up", m_pTex, Vec2(0.f, 0.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
@@ -68,18 +58,22 @@ Player::Player()
 	//for (size_t i = 0; i < pAnim->GetMaxFrame(); ++i)
 	//	pAnim->SetFrameOffset(i, Vec2(0.f, 20.f));
 }
+
 Player::~Player()
 {
 	//if (nullptr != m_pTex)
 	//	delete m_pTex;
 }
+
 void Player::Update()
 {
 	Vec2 vPos = GetPos();
 	float curSpeed = m_movementSpeed;
 
-	if (m_onDash)
+	if (m_dashRemainTime > 0.f) {
 		curSpeed = m_dashSpeed;
+		m_dashRemainTime -= fDT;
+	}
 
 	m_playerState = PLAYER_STATE::IDLE;
 	if (m_onShoot == true)
@@ -148,14 +142,13 @@ void Player::Update()
 #pragma region ´ë½¬
 	if (KEY_PRESS(KEY_TYPE::LSHIFT)) {
 		if (m_dashCool < 0.f) {
-			Dash();
+			m_dashRemainTime = 0.3f;
 			m_dashCool = 0.5f;
-			m_onDash = true;
-		}
-		else {
-			m_dashCool -= fDT;
 		}
 	}
+
+	m_dashCool -= fDT;
+
 #pragma endregion
 
 
@@ -190,11 +183,6 @@ void Player::CreateBullet()
 
 	pBullet->SetName(L"Player_Bullet");
 	SceneMgr::GetInst()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
-}
-
-void Player::Dash()
-{
-	// tlqkf
 }
 
 void Player::AnimationStateControl()

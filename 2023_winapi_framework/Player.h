@@ -12,7 +12,6 @@ public:
 	void Render(HDC _dc) override;
 private:
 	void CreateBullet();
-	void Dash();
 	void AnimationStateControl();
 private:
 	Texture* m_pTex;
@@ -20,11 +19,12 @@ private:
 	PLAYER_STATE m_playerState;
 	float m_shootRemainTime;
 	float m_shootDelay;
+
+	float m_dashRemainTime;
 	float m_dashCool;
 	float m_movementSpeed;
 	float m_dashSpeed;
 	bool m_onShoot;
-	bool m_onDash;
 
 	float m_hp;
 };
