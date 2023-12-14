@@ -23,8 +23,6 @@ void Wall::Render(HDC _dc)
 
 	for (int i = 0; i < 16; ++i)
 	{
-		//BitBlt(_dc, (int)(vPos.x - vScale.x / 2) + i * 32, (int)(vPos.y - vScale.y / 2) + 64, Width, Height, m_pTex->GetDC(), 0, 0, SRCCOPY);
 		StretchBlt(_dc, (int)(vPos.x - vScale.x / 2) + i * 64, (int)(vPos.y - vScale.y / 2) + 64, Width * 2, Height * 2, m_pTex->GetDC(), 0, 0, Width, Height, SRCCOPY);
-		//StretchBlt(_dc, (int)(vPos.x - vScale.x / 2) + i * 32, (int)(vPos.y - vScale.y / 2) + 64, Width * 2, Height * 2, m_pTex->GetDC(), 0, 0, Width, Height, SRCCOPY);
 	}
 }

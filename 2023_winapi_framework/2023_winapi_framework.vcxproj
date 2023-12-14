@@ -178,7 +178,10 @@
     <ClInclude Include="Boss_DestructionRay.h" />
     <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="Button.h" />
+    <ClInclude Include="Cursor.h" />
+    <ClInclude Include="QuitButton.h" />
+    <ClInclude Include="SettingButton.h" />
+    <ClInclude Include="StartButton.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Core.h" />
@@ -225,7 +228,10 @@
     <ClCompile Include="Boss_DestructionRay.cpp" />
     <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="QuitButton.cpp" />
+    <ClCompile Include="SettingButton.cpp" />
+    <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Core.cpp" />

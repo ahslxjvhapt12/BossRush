@@ -2,12 +2,12 @@
 #include "Object.h"
 
 class Texture;
-class Button :
-	public Object
+class SettingButton
+	:public Object
 {
 public:
-	Button();
-	~Button();
+	SettingButton();
+	~SettingButton();
 
 public:
 	void Update() override;
@@ -16,3 +16,4 @@ public:
 private:
 	Texture* m_pTex;
 };
+
