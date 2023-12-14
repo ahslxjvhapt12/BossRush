@@ -37,6 +37,7 @@ enum class OBJECT_GROUP
 	PLAYER,
 	MONSTER,
 	BULLET,
+	UI,
 	END = 30
 };
 

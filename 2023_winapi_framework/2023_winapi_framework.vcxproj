@@ -179,7 +179,9 @@
     <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cursor.h" />
+    <ClInclude Include="Ending.h" />
     <ClInclude Include="QuitButton.h" />
+    <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingButton.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="Collider.h" />
@@ -229,7 +231,9 @@
     <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="Ending.cpp" />
     <ClCompile Include="QuitButton.cpp" />
+    <ClCompile Include="Setting.cpp" />
     <ClCompile Include="SettingButton.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="Collider.cpp" />
