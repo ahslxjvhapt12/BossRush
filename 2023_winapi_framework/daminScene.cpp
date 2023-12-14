@@ -13,10 +13,11 @@
 #include "BackGround.h"
 #include "Wall.h"
 #include "Fence.h"
+#include "Tomas.h"
 
 void daminScene::Init()
 {
-
+	RECT rt = {};
 	Object* pBG = new BackGround;
 	pBG->SetPos(Vec2(100.f, 100.f));
 	pBG->SetScale(Vec2(200.f, 200.f));
@@ -47,9 +48,9 @@ void daminScene::Init()
 
 
 	Object* boss = new Boss;
+	boss->SetScale(Vec2(200.f ,400.f));
 	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));
 	AddObject(boss, OBJECT_GROUP::MONSTER);
-
 
 
 	/*LONG maxXpos = Core::GetInst()->GetResolution().x;
@@ -83,6 +84,13 @@ void daminScene::Update()
 void daminScene::Render(HDC _dc)
 {
 	Scene::Render(_dc);
+
+	Vec2 screenSize = Core::GetInst()->GetResolution();
+	//RECT_DRAWTEXT(str, 50, 50, 50, 50, _dc);
+	RECT rt = RECT_MAKE(screenSize.x - 320, 205, 600,300);
+	DrawTextW(_dc, L"aaaa", -1, &rt, DT_CENTER | DT_VCENTER);
+	//DrawText(_dc, L"ddddd", -1, , DT_CENTER | DT_VCENTER);
+	//RECT_DRAWTEXT(L"AAAA", screenSize.x - 100, 50, 100, 50, _dc);
 }
 
 void daminScene::Release()

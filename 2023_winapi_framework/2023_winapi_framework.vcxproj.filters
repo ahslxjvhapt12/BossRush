@@ -193,7 +193,18 @@
     <ClInclude Include="Boss_DestructionRay.h">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClInclude>
-    <ClInclude Include="TimeLine.h" />
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Fence.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="Boss_Attack_Tomas.h">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Tomas.h">
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeLine.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -308,6 +319,17 @@
     <ClCompile Include="Boss_DestructionRay.cpp">
       <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
     </ClCompile>
-    <ClCompile Include="TimeLine.cpp" />
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Fence.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Boss_Attack_Tomas.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Tomas.cpp">
+      <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeLine.cpp">
+      <Filter>Engine\07. Component</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

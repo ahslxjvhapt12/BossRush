@@ -17,7 +17,6 @@ public:
 	void RePlayTimeLine();
 	void UpdateTimeLine();
 	void AddTimeLine(const wstring& name, const int& waitTime,const int& rePeatCount, const void (*func));
-	void RemoveTimeLine();
 	Line* FindTimeLine(const wstring& name);
 private:
 	vector<wstring> m_TimeIndex;

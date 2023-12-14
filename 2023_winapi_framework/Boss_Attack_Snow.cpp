@@ -27,14 +27,11 @@ void Boss_Attack_Snow::OnEnter()
 	m_lifetTime = 0;
 	count = 3;
 
-	ResMgr::GetInst()->Play(L"SnowSong");
+	//ResMgr::GetInst()->Play(L"SnowSong");
 }
 
 void Boss_Attack_Snow::Update()
 {
-	/*if (m_lifetTime % 5 == 0)
-		CreateSnow();*/
-
 	m_lifetTime -= fDT;
 	if(m_lifetTime <= 0 && count > 0)
 	{
@@ -56,12 +53,7 @@ void Boss_Attack_Snow::Render(HDC _dc)
 
 void Boss_Attack_Snow::OnExit()
 {
-	/*for (auto snow : m_snowVec)
-	{
-		if (snow == nullptr)
-			return;
-		EventMgr::GetInst()->DeleteObject(snow);
-	}*/
+	//ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
 }
 
 void Boss_Attack_Snow::CreateSnow()

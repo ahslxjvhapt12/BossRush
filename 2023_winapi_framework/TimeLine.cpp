@@ -57,10 +57,6 @@ void TimeLine::AddTimeLine(const wstring& name, const int& waitTime, const int& 
 	m_TimeLines.insert({name, line});
 }
 
-void TimeLine::RemoveTimeLine()
-{
-}
-
 TimeLine::Line* TimeLine::FindTimeLine(const wstring& name)
 {
 	map<wstring, Line*>::iterator iter = m_TimeLines.find(name);

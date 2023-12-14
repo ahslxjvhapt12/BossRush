@@ -53,7 +53,6 @@ void Razer::Update()
 		const Object* pOtherObj = _pOther->GetObj();
 		if (pOtherObj->GetName() == L"player")
 		{
-			// 昏力贸府秦林搁蹬.
 			
 		}
 	}

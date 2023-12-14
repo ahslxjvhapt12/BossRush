@@ -1,24 +1,29 @@
 #pragma once
 #include "Object.h"
-
 class Texture;
-class Boss :
+
+class Tomas:
 	public Object
 {
+public :
+	enum Dir
+	{
+		Left, Right, Up, Down
+	};
 public:
-	Boss();
-	~Boss();
+	Tomas(float speed, float delay,Dir dir, Vec2 vPos);
+	~Tomas();
 public:
 	void Update() override;
 	void Render(HDC _dc) override;
 	virtual void EnterCollision(Collider* _pOther) override;
-	virtual void ExitCollision(Collider* _pOther)  override;
-	int GetScore() { return m_score; }
-public:
-	void Raser(Vec2 pos);
 private:
-	int m_score;
 	Texture* m_pTex;
-	UINT m_check;
+	Dir m_dir;
+	Vec2 m_Vec;
+	Vec2 m_ScreenSize;
+	float m_speed;
+	float m_lifeTime;
+	float m_delay;
 };
 

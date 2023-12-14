@@ -86,7 +86,7 @@ void Boss_DestructionRay::Update()
 	else if(m_curTime >= 4.f && m_followcount <= 0)
 	{
 		GetOwner()->GetStateMachine()->ChangeRandomState();
-		//GetOwner()->GetStateMachine()->ChangeState(L"Idle");
+		/*GetOwner()->GetStateMachine()->ChangeState(L"AttackSnow");*/
 
 	}
 }
