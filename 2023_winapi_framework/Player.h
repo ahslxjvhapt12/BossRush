@@ -10,6 +10,8 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _dc) override;
+public :
+	void OnHit();
 private:
 	void CreateBullet();
 	void AnimationStateControl();

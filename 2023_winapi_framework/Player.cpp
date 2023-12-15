@@ -11,6 +11,7 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
+#include "SceneMgr.h"
 
 Player::Player()
 	: m_pTex(nullptr)
@@ -292,4 +293,12 @@ void Player::Render(HDC _dc)
 	//	, Width, Height, m_pTex->GetDC()
 	//	, 0, 0, Width, Height, RGB(255, 0, 255));
 	Component_Render(_dc);
+}
+
+void Player::OnHit()
+{
+	m_hp--;
+	if (m_hp <= 0) {
+		SceneMgr::GetInst()->LoadScene(L"Ending");
+	}
 }

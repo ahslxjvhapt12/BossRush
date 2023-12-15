@@ -74,9 +74,6 @@
     <Filter Include="Engine\04. Object\MainObject\Boss\States">
       <UniqueIdentifier>{c0471979-4cc1-44ed-81ad-5bfe9fff4b50}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\PatternManger">
-      <UniqueIdentifier>{a09ff6aa-9810-4bc9-abe3-fd780f3a9f87}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -206,13 +203,13 @@
       <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
     </ClInclude>
     <ClInclude Include="Cursor.h" />
+    <ClInclude Include="Ending.h" />
     <ClInclude Include="QuitButton.h" />
+    <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingButton.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="IntroScene.h" />
-    <ClInclude Include="PatternManager.h">
-      <Filter>Engine\03. Manager\PatternManger</Filter>
-    </ClInclude>
+    <ClInclude Include="Slider.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -337,12 +334,12 @@
       <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
     </ClCompile>
     <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="Ending.cpp" />
     <ClCompile Include="QuitButton.cpp" />
+    <ClCompile Include="Setting.cpp" />
     <ClCompile Include="SettingButton.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="IntroScene.cpp" />
-    <ClCompile Include="PatternManager.cpp">
-      <Filter>Engine\03. Manager\PatternManger</Filter>
-    </ClCompile>
+    <ClCompile Include="Slider.cpp" />
   </ItemGroup>
 </Project>

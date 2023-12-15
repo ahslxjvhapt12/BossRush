@@ -6,6 +6,7 @@
 #include "Cursor.h"
 #include "KeyMgr.h"
 #include "TimeMgr.h"
+#include "SceneMgr.h"
 
 void IntroScene::Init()
 {
@@ -24,7 +25,7 @@ void IntroScene::Init()
 	quit->SetScale(Vec2(200.f, 200.f));
 	AddObject(quit, OBJECT_GROUP::UI);
 
-	idx = 1;
+	idx = 0;
 	cursor = new Cursor;
 	cursor->SetPos(Vec2(100.f, 700.f));
 	cursor->SetScale(Vec2(200.f, 200.f));
@@ -55,7 +56,7 @@ void IntroScene::Update()
 
 void IntroScene::ButtonDown() {
 	if (idx == 0) {
-		// 게임시작
+		SceneMgr::GetInst()->LoadScene(L"daminScene");
 	}
 	else if (idx == 1) {
 		// 설정
