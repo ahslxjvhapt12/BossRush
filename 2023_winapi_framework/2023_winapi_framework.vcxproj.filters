@@ -202,9 +202,14 @@
     <ClInclude Include="Tomas.h">
       <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
     </ClInclude>
-    <ClInclude Include="TimeLine.h">
-      <Filter>Engine\07. Component</Filter>
-    </ClInclude>
+    <ClInclude Include="Cursor.h" />
+    <ClInclude Include="Ending.h" />
+    <ClInclude Include="QuitButton.h" />
+    <ClInclude Include="Setting.h" />
+    <ClInclude Include="SettingButton.h" />
+    <ClInclude Include="StartButton.h" />
+    <ClInclude Include="IntroScene.h" />
+    <ClInclude Include="Slider.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -328,8 +333,13 @@
     <ClCompile Include="Tomas.cpp">
       <Filter>Engine\04. Object\MainObject\Boss\Attack</Filter>
     </ClCompile>
-    <ClCompile Include="TimeLine.cpp">
-      <Filter>Engine\07. Component</Filter>
-    </ClCompile>
+    <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="Ending.cpp" />
+    <ClCompile Include="QuitButton.cpp" />
+    <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="SettingButton.cpp" />
+    <ClCompile Include="StartButton.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
+    <ClCompile Include="Slider.cpp" />
   </ItemGroup>
 </Project>
