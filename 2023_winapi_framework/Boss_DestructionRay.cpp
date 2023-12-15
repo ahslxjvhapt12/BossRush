@@ -62,8 +62,7 @@ void Boss_DestructionRay::Update()
 		return;
 
 
-		/*if (m_curTime >= 1.f)
-			continue;*/
+		if (m_curTime <= 1.f)
 		m_rayVec->SetPos(Vec2(m_player->GetPos().x, 50.f));
 
 

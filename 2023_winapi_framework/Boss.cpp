@@ -15,6 +15,7 @@
 #include "Boss_Attack_Snow.h"
 #include "Boss_DestructionRay.h"
 #include "Boss_Attack_Tomas.h"
+#include "Boss_FollowEnemySpawn.h"
 
 Boss::Boss()
 	: m_pTex(nullptr)
@@ -38,15 +39,16 @@ Boss::Boss()
 	Boss_Attack_Snow* AttackSnow = new Boss_Attack_Snow;
 	Boss_DestructionRay* DestructionRay = new Boss_DestructionRay;
 	Boss_Attack_Tomas* AttackTomas = new Boss_Attack_Tomas;
+	Boss_FollowEnemySpawn* FollowEnemy = new Boss_FollowEnemySpawn;
 
 	GetStateMachine()->AddState(L"AttackSnow", AttackSnow);
 	GetStateMachine()->AddState(L"DestructionRay", DestructionRay);
 	GetStateMachine()->AddState(L"AttackTomas", AttackTomas);
+	GetStateMachine()->AddState(L"FollowEnemy", FollowEnemy);
 	
-
-	GetStateMachine()->ChangeRandomState();
+	GetStateMachine()->ChangeState(L"FollowEnemy");
+	//GetStateMachine()->ChangeRandomState();
 #pragma endregion
-
 }
 
 Boss::~Boss()

@@ -176,10 +176,12 @@
     <ClInclude Include="Boss_Attack_Snow.h" />
     <ClInclude Include="Boss_Attack_Tomas.h" />
     <ClInclude Include="Boss_DestructionRay.h" />
+    <ClInclude Include="Boss_FollowEnemySpawn.h" />
     <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="Ending.h" />
+    <ClInclude Include="Jang.h" />
     <ClInclude Include="QuitButton.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingButton.h" />
@@ -229,10 +231,12 @@
     <ClCompile Include="Boss_Attack_Snow.cpp" />
     <ClCompile Include="Boss_Attack_Tomas.cpp" />
     <ClCompile Include="Boss_DestructionRay.cpp" />
+    <ClCompile Include="Boss_FollowEnemySpawn.cpp" />
     <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Ending.cpp" />
+    <ClCompile Include="Jang.cpp" />
     <ClCompile Include="QuitButton.cpp" />
     <ClCompile Include="Setting.cpp" />
     <ClCompile Include="SettingButton.cpp" />
