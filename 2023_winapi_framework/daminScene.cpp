@@ -40,6 +40,7 @@ void daminScene::Init()
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->LoadSound(L"Laser", L"Sound\\razer.wav", false);
+	ResMgr::GetInst()->LoadSound(L"Pigeon", L"Sound\\Pigeon.wav", false);
 	//ResMgr::GetInst()->Play(L"BGM");
 
 	Object* pObj = new Player;
