@@ -60,18 +60,12 @@ void Boss_DestructionRay::Update()
 
 	if (m_count > 0)
 		return;
-	//std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
-	//const vector<Object*>& player = pCurScene->GetGroupObject(OBJECT_GROUP::PLAYER);
-	//char str[10];
-	/*wchar_t str[10];
-	wsprintf(str,str.length(),10);
-	OutputDebugString("%d %d,m_count" );*/
-	for(auto objects : m_rayVec)
-	{
-		if (m_curTime >= 1.f)
-			continue;
-		objects->SetPos(Vec2(m_player->GetPos().x, 50.f));
-	}
+
+
+		/*if (m_curTime >= 1.f)
+			continue;*/
+		m_rayVec->SetPos(Vec2(m_player->GetPos().x, 50.f));
+
 
 	if(m_curTime >= 4.f && m_followcount > 0)
 	{
@@ -105,5 +99,5 @@ void Boss_DestructionRay::CreateRay(Vec2 Pos)
 
 	gaster->SetPos(Vec2(Pos.x, 50.f));
 	SceneMgr::GetInst()->GetCurScene()->AddObject(gaster, OBJECT_GROUP::MONSTER);
-	m_rayVec.push_back(gaster);
+	m_rayVec = gaster;
 }

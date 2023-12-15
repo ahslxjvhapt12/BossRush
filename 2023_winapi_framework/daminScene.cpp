@@ -15,6 +15,8 @@
 #include "Fence.h"
 #include "Tomas.h"
 
+Boss* bossObj;
+
 void daminScene::Init()
 {
 	RECT rt = {};
@@ -47,12 +49,12 @@ void daminScene::Init()
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 
-	Object* boss = new Boss;
+	Boss* boss = new Boss;
+	boss->SetName(L"Boss");
 	boss->SetScale(Vec2(200.f ,400.f));
 	boss->SetPos((Vec2({ Core::GetInst()->GetResolution().x- 100, Core::GetInst()->GetResolution().y / 2 })));
 	AddObject(boss, OBJECT_GROUP::MONSTER);
-
-
+	bossObj = boss;
 	/*LONG maxXpos = Core::GetInst()->GetResolution().x;
 	for (int i = 0; i < 50; i++) 
 	{
@@ -86,11 +88,31 @@ void daminScene::Render(HDC _dc)
 	Scene::Render(_dc);
 
 	Vec2 screenSize = Core::GetInst()->GetResolution();
-	//RECT_DRAWTEXT(str, 50, 50, 50, 50, _dc);
-	RECT rt = RECT_MAKE(screenSize.x - 320, 205, 600,300);
-	DrawTextW(_dc, L"aaaa", -1, &rt, DT_CENTER | DT_VCENTER);
-	//DrawText(_dc, L"ddddd", -1, , DT_CENTER | DT_VCENTER);
-	//RECT_DRAWTEXT(L"AAAA", screenSize.x - 100, 50, 100, 50, _dc);
+
+	SetBkMode(_dc, 0);
+	HFONT font = CreateFontW(
+		55,							// 글자 크기
+		0,                          // 폭 (기본값 0)
+		0,                          // 각도 (기본값 0)
+		0,                          // 기울임 각도 (기본값 0)
+		FW_NORMAL,					// 글자 두께
+		false,						// 기울임 여부
+		false,						// 밑줄 여부
+		0,                          // 취소 선 여부 (기본값 0)
+		ANSI_CHARSET,               // 문자 집합 (기본값 ANSI_CHARSET)
+		OUT_DEFAULT_PRECIS,         // 출력 정밀도 (기본값 OUT_DEFAULT_PRECIS)
+		CLIP_DEFAULT_PRECIS,        // 클리핑 정밀도 (기본값 CLIP_DEFAULT_PRECIS)
+		DEFAULT_QUALITY,            // 출력 품질 (기본값 DEFAULT_QUALITY)
+		DEFAULT_PITCH | FF_DONTCARE,// 피치 및 글꼴 패밀리 (기본값)
+		L"Arial"                    // 글꼴 이름
+	);
+	std::wstring socre = std::to_wstring(bossObj->GetScore());
+	SelectObject(_dc, font);
+	
+	RECT rt = RECT_MAKE(screenSize.x - 100, 60, 100,60);
+	DrawTextW(_dc, socre.c_str(), -1, &rt, DT_CENTER | DT_VCENTER);
+	DeleteObject(font);
+
 }
 
 void daminScene::Release()

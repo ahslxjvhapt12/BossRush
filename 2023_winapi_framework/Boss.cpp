@@ -35,9 +35,6 @@ Boss::Boss()
 	CreateStateMachine();
 	//GetStateMachine()->SetOnwer(this);
 
-	//Boss_Idle* Idle = new Boss_Idle;
-	//GetStateMachine()->AddState(L"Idle", Idle);
-
 	Boss_Attack_Snow* AttackSnow = new Boss_Attack_Snow;
 	Boss_DestructionRay* DestructionRay = new Boss_DestructionRay;
 	Boss_Attack_Tomas* AttackTomas = new Boss_Attack_Tomas;
@@ -47,9 +44,7 @@ Boss::Boss()
 	GetStateMachine()->AddState(L"AttackTomas", AttackTomas);
 	
 
-	//GetStateMachine()->ChangeRandomState();
-	GetStateMachine()->ChangeState(L"AttackTomas");
-	//state->OnEnter();
+	GetStateMachine()->ChangeRandomState();
 #pragma endregion
 
 }

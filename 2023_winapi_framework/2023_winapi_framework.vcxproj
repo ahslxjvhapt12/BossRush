@@ -179,6 +179,7 @@
     <ClInclude Include="Boss_Idle.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cursor.h" />
+    <ClInclude Include="PatternManager.h" />
     <ClInclude Include="QuitButton.h" />
     <ClInclude Include="SettingButton.h" />
     <ClInclude Include="StartButton.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="Boss_Idle.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="PatternManager.cpp" />
     <ClCompile Include="QuitButton.cpp" />
     <ClCompile Include="SettingButton.cpp" />
     <ClCompile Include="StartButton.cpp" />

@@ -3,8 +3,7 @@
 #include "TimeMgr.h"
 
 TimeLine::TimeLine()
-	: m_curLine(nullptr)
-	, curTime(0)
+	: curTime(0)
 	, curIndex(0)
 	, curRepeatCount(0)
 {
@@ -14,53 +13,75 @@ TimeLine::~TimeLine()
 {
 }
 
-void TimeLine::RePlayTimeLine()
+void TimeLine::PlayTrack(const wstring& trackName)
 {
+	m_curTrack = GetTrack(trackName);
+	curIndex = 0;
+	m_delay = m_curTrack->at(0).second->waitTime;
+	curRepeatCount = m_curTrack->at(0).second->count;
 }
 
 void TimeLine::UpdateTimeLine()
 {
-	if(curIndex == 0 && curRepeatCount == 0)
-		curRepeatCount = FindTimeLine(m_TimeIndex[curIndex])->count;
-
-	if (FindTimeLine(m_TimeIndex[curIndex]) == nullptr)
+	if (m_curTrack == nullptr || m_curTrack->size() < curIndex)
 		return;
-
+	
 	curTime += fDT;
-	if(curTime >= FindTimeLine(m_TimeIndex[curIndex])->waitTime)
+
+	if(curTime > m_delay)
 	{
-		FindTimeLine(m_TimeIndex[curIndex])->Func;
+		m_curTrack->at(curIndex).second->Func;
 		curRepeatCount--;
-		curTime = 0;
 		if(curRepeatCount <= 0)
 		{
-			curIndex++;
-			curRepeatCount = FindTimeLine(m_TimeIndex[curIndex])->count;
+			++curIndex;
+			m_delay = m_curTrack->at(curIndex).second->waitTime;
+			curRepeatCount = m_curTrack->at(curIndex).second->count;
 		}
 	}
 }
 
-void TimeLine::AddTimeLine(const wstring& name, const int& waitTime, const int& rePeatCount, const void(*func))
+vector<std::pair<wstring, TimeLine::Line*>>*TimeLine::GetTrack(wstring trackName)
 {
-	Line* line = FindTimeLine(name);
+	map<wstring, vector<std::pair<wstring, Line*>>>::iterator iter = m_TimeLines.find(trackName);
+	if (iter == m_TimeLines.end())
+		return;
+	return &(iter->second);
+}
+
+void TimeLine::CreateTrack(const wstring& trackName)
+{
+	vector<std::pair<wstring, Line*>>* track = new vector<std::pair<wstring, Line*>>;
+	m_TimeLines.insert({trackName, *track});
+	m_TracksName->push_back(trackName);
+}
+
+void TimeLine::AddTimeLine(const wstring& trackname, const wstring& lineName, const int& delay, const int& rePeatCount, const void(*func))
+{
+	vector<std::pair<wstring, TimeLine::Line*>>* track = GetTrack(trackname);
+	if (track->size() <= 0)
+		return;
+
+	Line* line = FindTimeLine(lineName);
 	if (line != nullptr)
 		return;
 
 	line = new Line;
-	if(rePeatCount <= 0)
-		line->count = 1;
-	else
-		line->count = rePeatCount;
-	line->waitTime = waitTime;
+	line->count = (rePeatCount <= 0 ? 1 : rePeatCount);
+	line->waitTime = delay;
 	line->Func = &func;
-	m_TimeIndex.push_back(name);
-	m_TimeLines.insert({name, line});
+	track->push_back(std::make_pair(lineName, line));
 }
 
-TimeLine::Line* TimeLine::FindTimeLine(const wstring& name)
+TimeLine::Line* TimeLine::FindTimeLine(const wstring& lineName)
 {
-	map<wstring, Line*>::iterator iter = m_TimeLines.find(name);
-	if (iter == m_TimeLines.end())
+	Line* Findline;
+	for(auto line : m_Track)
+		if (line.first == lineName)
+			Findline = line.second;
+
+	if (Findline == nullptr)
 		return nullptr;
-	return iter->second;
+	
+	return Findline;
 }

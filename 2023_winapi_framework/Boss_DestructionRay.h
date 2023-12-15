@@ -19,6 +19,6 @@ private:
 	float m_curTime;
 	int m_count;
 	int m_followcount;
-	vector<Object*> m_rayVec;
+	Object* m_rayVec;
 };
 
