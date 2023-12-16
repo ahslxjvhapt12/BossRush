@@ -49,7 +49,7 @@ void IntroScene::Update()
 	{
 		ButtonDown();
 	}
-	cursor->SetPos({ 100.f, 500 + idx * 100.f});
+	cursor->SetPos({ 100.f, 500 + idx * 100.f });
 
 	Scene::Update();
 }
@@ -59,7 +59,7 @@ void IntroScene::ButtonDown() {
 		SceneMgr::GetInst()->LoadScene(L"daminScene");
 	}
 	else if (idx == 1) {
-		// 설정
+		SceneMgr::GetInst()->LoadScene(L"Setting");
 	}
 	else if (idx == 2) {
 		// 종료

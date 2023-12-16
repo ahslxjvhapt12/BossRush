@@ -19,4 +19,5 @@ private:
 	Texture* m_pSliderTex;
 	Texture* m_pFillTex;
 	Texture* m_volumeTex;
+	Texture* m_setting;
 };

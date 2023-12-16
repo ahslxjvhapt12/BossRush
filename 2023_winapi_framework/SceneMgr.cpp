@@ -15,8 +15,8 @@ void SceneMgr::Init()
 	RegisterScene(L"Setting", std::make_shared<Setting>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"Setting");
-	//LoadScene(L"IntroScene");
+	LoadScene(L"IntroScene");
+	//LoadScene(L"Setting");
 	//LoadScene(L"daminScene");
 	//LoadScene(L"Start_Scene");
 }
