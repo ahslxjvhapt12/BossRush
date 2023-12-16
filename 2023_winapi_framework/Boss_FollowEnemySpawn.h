@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-#include "TimeLine.h"
+class TimeLine;
 
 class Boss_FollowEnemySpawn : public State
 {
@@ -14,7 +14,10 @@ public:
 	void OnExit() override;
 public:
 	void CreateJang(Vec2 pos);
+	void RnadomSpawnJang();
 private:
 	TimeLine* m_timeLine;
+	vector<Object*> m_vEnemy;
+	float m_fCurTime;
 };
 

@@ -44,10 +44,10 @@ Boss::Boss()
 	GetStateMachine()->AddState(L"AttackSnow", AttackSnow);
 	GetStateMachine()->AddState(L"DestructionRay", DestructionRay);
 	GetStateMachine()->AddState(L"AttackTomas", AttackTomas);
-	GetStateMachine()->AddState(L"FollowEnemy", FollowEnemy);
+	//GetStateMachine()->AddState(L"FollowEnemy", FollowEnemy);
 	
-	GetStateMachine()->ChangeState(L"FollowEnemy");
-	//GetStateMachine()->ChangeRandomState();
+	//GetStateMachine()->ChangeState(L"FollowEnemy");
+	GetStateMachine()->ChangeRandomState();
 #pragma endregion
 }
 

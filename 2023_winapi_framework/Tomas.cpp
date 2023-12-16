@@ -8,6 +8,7 @@
 #include "EventMgr.h"
 #include "Collider.h"
 #include "SelectGDI.h"
+#include "Player.h"
 
 Tomas::Tomas(float speed, float delay, Dir dir, Vec2 vPos)
 	:m_pTex(nullptr)
@@ -113,4 +114,10 @@ void Tomas::Render(HDC _dc)
 
 void Tomas::EnterCollision(Collider* _pOther)
 {
+	const Object* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"player")
+	{
+		Player* player = (Player*)&pOtherObj;
+		player->OnHit();
+	}
 }

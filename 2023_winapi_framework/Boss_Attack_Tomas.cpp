@@ -6,6 +6,7 @@
 #include "Scene.h"
 #include "StateMachine.h"
 #include "Core.h"
+#include "ResMgr.h"
 
 Boss_Attack_Tomas::Boss_Attack_Tomas()
 	: m_SpawnDelay(0)
@@ -128,11 +129,11 @@ void Boss_Attack_Tomas::OnEnter()
 	m_curIndex = 0;
 	m_spanCount = 3;
 	m_curPattern = m_pattern[rand() % m_pattern.size()];
+	ResMgr::GetInst()->Play(L"Tomas");
 }
 
 void Boss_Attack_Tomas::Update()
 {
-
 	m_curTime += fDT;
 
 	if (m_curIndex >= m_curPattern.patterns.size())
@@ -159,6 +160,7 @@ void Boss_Attack_Tomas::Render(HDC _dc)
 
 void Boss_Attack_Tomas::OnExit()
 {
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::EFFECT);
 }
 
 void Boss_Attack_Tomas::CreateTomas(float speed, float delay, Tomas::Dir dir, Vec2 vPos)

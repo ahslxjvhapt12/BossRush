@@ -7,7 +7,7 @@
 #include "Texture.h"
 #include "TimeMgr.h"
 #include "EventMgr.h"
-
+#include "Player.h"
 
 Razer::Razer()
 	: m_shotDelay(1)
@@ -53,7 +53,8 @@ void Razer::Update()
 		const Object* pOtherObj = _pOther->GetObj();
 		if (pOtherObj->GetName() == L"player")
 		{
-			
+			Player* player = (Player*)&pOtherObj;
+			player->OnHit();
 		}
 	}
 

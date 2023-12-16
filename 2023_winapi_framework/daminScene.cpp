@@ -41,7 +41,9 @@ void daminScene::Init()
 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->LoadSound(L"Laser", L"Sound\\razer.wav", false);
 	ResMgr::GetInst()->LoadSound(L"Pigeon", L"Sound\\Pigeon.wav", false);
-	//ResMgr::GetInst()->Play(L"BGM");
+	ResMgr::GetInst()->LoadSound(L"Jang", L"Sound\\jang.wav", false);
+	ResMgr::GetInst()->LoadSound(L"Tomas", L"Sound\\Tomas.wav", false);
+
 
 	Object* pObj = new Player;
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));

@@ -23,6 +23,7 @@ Player::Player()
 	, m_movementSpeed(100.f)
 	, m_dashSpeed(500.f)
 	, m_dashRemainTime(0.f)
+	, m_hp(3)
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\Player\\PlayerAnimationSheet.bmp");
 	CreateCollider();
@@ -299,6 +300,6 @@ void Player::OnHit()
 {
 	m_hp--;
 	if (m_hp <= 0) {
-		SceneMgr::GetInst()->LoadScene(L"Ending");
+		//SceneMgr::GetInst()->LoadScene(L"Ending");
 	}
 }

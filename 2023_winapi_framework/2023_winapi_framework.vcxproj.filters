@@ -210,6 +210,11 @@
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="Slider.h" />
+    <ClInclude Include="Boss_FollowEnemySpawn.h" />
+    <ClInclude Include="Jang.h" />
+    <ClInclude Include="TimeLine.h">
+      <Filter>Engine\03. Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -341,5 +346,10 @@
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="Boss_FollowEnemySpawn.cpp" />
+    <ClCompile Include="Jang.cpp" />
+    <ClCompile Include="TimeLine.cpp">
+      <Filter>Engine\03. Manager</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

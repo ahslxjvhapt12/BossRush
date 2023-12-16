@@ -45,7 +45,7 @@ vector<std::pair<wstring, TimeLine::Line*>>*TimeLine::GetTrack(wstring trackName
 {
 	map<wstring, vector<std::pair<wstring, Line*>>>::iterator iter = m_TimeLines.find(trackName);
 	if (iter == m_TimeLines.end())
-		return;
+		return nullptr;
 	return &(iter->second);
 }
 
@@ -56,7 +56,7 @@ void TimeLine::CreateTrack(const wstring& trackName)
 	m_TracksName->push_back(trackName);
 }
 
-void TimeLine::AddTimeLine(const wstring& trackname, const wstring& lineName, const int& delay, const int& rePeatCount, const void(*func))
+void TimeLine::AddTimeLine(const wstring& trackname, const wstring& lineName, const float& delay, const int& rePeatCount, const void(*func))
 {
 	vector<std::pair<wstring, TimeLine::Line*>>* track = GetTrack(trackname);
 	if (track->size() <= 0)
@@ -75,7 +75,7 @@ void TimeLine::AddTimeLine(const wstring& trackname, const wstring& lineName, co
 
 TimeLine::Line* TimeLine::FindTimeLine(const wstring& lineName)
 {
-	Line* Findline;
+	Line* Findline = nullptr;
 	for(auto line : m_Track)
 		if (line.first == lineName)
 			Findline = line.second;
