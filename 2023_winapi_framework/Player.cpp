@@ -12,6 +12,7 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "SceneMgr.h"
+#include "Core.h"
 
 Player::Player()
 	: m_pTex(nullptr)
@@ -153,10 +154,13 @@ void Player::Update()
 
 #pragma endregion
 
-
+	Vec2 screenSize = Core::GetInst()->GetResolution();
 	AnimationStateControl();
-	SetPos(vPos);
 	GetAnimator()->Update();
+
+	if (vPos.x > screenSize.x - 280 || vPos.x <= 0 || vPos.y <= 130 || vPos.y >= screenSize.y)
+		return;
+	SetPos(vPos);
 }
 
 void Player::CreateBullet()
@@ -304,6 +308,6 @@ void Player::OnHit()
 		ResMgr::GetInst()->Stop(SOUND_CHANNEL::END);
 		ResMgr::GetInst()->Stop(SOUND_CHANNEL::EFFECT);
 		ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
-		SceneMgr::GetInst()->LoadScene(L"Ending");
+		//SceneMgr::GetInst()->LoadScene(L"Ending");
 	}
 }
