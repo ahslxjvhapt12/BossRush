@@ -14,7 +14,10 @@ public:
 	void DeleteObject(Object* _pObj);
 private:
 	void Excute(const tEvent& _eve);
+public:
+	int socre;
 private:
+	friend class SceneMgr;
 	vector<tEvent> m_vecEvent;
 	vector<Object*> m_vecDead;
 };

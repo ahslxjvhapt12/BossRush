@@ -19,7 +19,8 @@ Jang::Jang(float speed, int hp)
 	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
 	const vector<Object*>& player = pCurScene->GetGroupObject(OBJECT_GROUP::PLAYER);
 	SetPos(Vec2(500.f, 500.f));
-	m_player = player[0];
+	if(player.size() > 0)
+		m_player = player[0];
 }
 
 Jang::~Jang()
@@ -28,6 +29,8 @@ Jang::~Jang()
 
 void Jang::Update()
 {
+	if (m_player == nullptr)
+		return;
 	Vec2 curPos = GetPos();
 	Vec2 targetPos = m_player->GetPos();
 	//Vec2 dir = Vec2

@@ -91,7 +91,6 @@ void daminScene::Render(HDC _dc)
 	Scene::Render(_dc);
 
 	Vec2 screenSize = Core::GetInst()->GetResolution();
-
 	SetBkMode(_dc, 0);
 	HFONT font = CreateFontW(
 		55,							// 글자 크기
@@ -110,6 +109,7 @@ void daminScene::Render(HDC _dc)
 		L"Arial"                    // 글꼴 이름
 	);
 	std::wstring socre = std::to_wstring(bossObj->GetScore());
+	Core::GetInst()->score = bossObj->GetScore();
 	SelectObject(_dc, font);
 	
 	RECT rt = RECT_MAKE(screenSize.x - 100, 60, 100,60);

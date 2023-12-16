@@ -308,6 +308,6 @@ void Player::OnHit()
 		ResMgr::GetInst()->Stop(SOUND_CHANNEL::END);
 		ResMgr::GetInst()->Stop(SOUND_CHANNEL::EFFECT);
 		ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
-		//SceneMgr::GetInst()->LoadScene(L"Ending");
+		SceneMgr::GetInst()->LoadScene(L"Ending");
 	}
 }

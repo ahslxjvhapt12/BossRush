@@ -48,6 +48,8 @@ private:
 	void Update();
 	void Render();
 	void CreateGDI();
+public:
+	int score;
 private:
 	HWND	m_hWnd;
 	HDC		m_hDC; // ∏ﬁ¿Œ DC

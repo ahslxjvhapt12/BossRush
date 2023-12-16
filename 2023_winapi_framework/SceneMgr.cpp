@@ -5,6 +5,7 @@
 #include "IntroScene.h"
 #include "Ending.h"
 #include "Setting.h"
+#include "EventMgr.h"
 
 void SceneMgr::Init()
 {
@@ -37,6 +38,8 @@ void SceneMgr::Render(HDC _dc)
 
 void SceneMgr::LoadScene(const wstring& _scenename)
 {
+	EventMgr::GetInst()->m_vecEvent.clear();
+	EventMgr::GetInst()->m_vecDead.clear();
 	// 씬이 있으면
 	if (m_pCurScene != nullptr)
 	{

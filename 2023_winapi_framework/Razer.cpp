@@ -53,6 +53,8 @@ void Razer::EnterCollision(Collider* _pOther)
 	const Object* pOtherObj = _pOther->GetObj();
 	if (pOtherObj->GetName() == L"player")
 	{
+		EventMgr::GetInst()->DeleteObject(this);
+
 		Player* player = (Player*)&pOtherObj;
 		player->OnHit();
 	}

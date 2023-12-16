@@ -5,6 +5,8 @@ void EventMgr::Update()
 {
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
+		if (m_vecDead[i] == nullptr)
+			return;
 		try
 		{
 			delete m_vecDead[i];
