@@ -54,7 +54,7 @@ Boss_Attack_Tomas::Boss_Attack_Tomas()
 
 	for(int j = 0; j < 5; j++)
 	{
-		int spawnCount = 5;
+		int spawnCount = ((j == 0) || (j % 2 == 0) ? 5 : 4);
 		float xDist = ScreenSize.y / (spawnCount - 1);
 
 		for(int i = 0; i < spawnCount; i++)
@@ -66,7 +66,7 @@ Boss_Attack_Tomas::Boss_Attack_Tomas()
 			HorVer.patterns.push_back(Vertical);
 		}
 
-		spawnCount = 6;
+		spawnCount = ((j == 0) || (j % 2 == 0) ? 5 : 4);
 		xDist = ScreenSize.x / (spawnCount - 1);
 		for (int i = 0; i < spawnCount; i++)
 		{
@@ -125,6 +125,9 @@ Boss_Attack_Tomas::~Boss_Attack_Tomas()
 
 void Boss_Attack_Tomas::OnEnter()
 {
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::END);
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::EFFECT);
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
 	m_curTime = 0;
 	m_curIndex = 0;
 	m_spanCount = 3;
@@ -138,7 +141,7 @@ void Boss_Attack_Tomas::Update()
 
 	if (m_curIndex >= m_curPattern.patterns.size())
 	{
-		if (m_curTime > 6.5f);
+		if (m_curTime > 2.5f)
 			GetOwner()->GetStateMachine()->ChangeRandomState();
 		return;
 	}
@@ -160,7 +163,9 @@ void Boss_Attack_Tomas::Render(HDC _dc)
 
 void Boss_Attack_Tomas::OnExit()
 {
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::END);
 	ResMgr::GetInst()->Stop(SOUND_CHANNEL::EFFECT);
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
 }
 
 void Boss_Attack_Tomas::CreateTomas(float speed, float delay, Tomas::Dir dir, Vec2 vPos)
