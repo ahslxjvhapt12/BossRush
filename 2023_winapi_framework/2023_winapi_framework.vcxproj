@@ -173,6 +173,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="Boss_Attack_Pigeon.h" />
     <ClInclude Include="Boss_Attack_Snow.h" />
     <ClInclude Include="Boss_Attack_Tomas.h" />
     <ClInclude Include="Boss_DestructionRay.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Jang.h" />
+    <ClInclude Include="Pigeon.h" />
     <ClInclude Include="QuitButton.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingButton.h" />
@@ -229,6 +231,7 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Boss_Attack_Pigeon.cpp" />
     <ClCompile Include="Boss_Attack_Snow.cpp" />
     <ClCompile Include="Boss_Attack_Tomas.cpp" />
     <ClCompile Include="Boss_DestructionRay.cpp" />
@@ -238,6 +241,7 @@
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Ending.cpp" />
     <ClCompile Include="Jang.cpp" />
+    <ClCompile Include="Pigeon.cpp" />
     <ClCompile Include="QuitButton.cpp" />
     <ClCompile Include="Setting.cpp" />
     <ClCompile Include="SettingButton.cpp" />

@@ -3,6 +3,7 @@
 #include "Start_Scene.h"
 #include "daminScene.h"
 #include "IntroScene.h"
+#include "Ending.h"
 #include "Setting.h"
 
 void SceneMgr::Init()
@@ -13,11 +14,13 @@ void SceneMgr::Init()
 	RegisterScene(L"daminScene", std::make_shared<daminScene>());
 	RegisterScene(L"IntroScene", std::make_shared<IntroScene>());
 	RegisterScene(L"Setting", std::make_shared<Setting>());
+	RegisterScene(L"Ending", std::make_shared<Ending>());
 
 	// Ã¹ ¾À ÁöÁ¤
+	//LoadScene(L"Ending");
+	LoadScene(L"IntroScene");
 	//LoadScene(L"Setting");
-	//LoadScene(L"IntroScene");
-	LoadScene(L"daminScene");
+	//LoadScene(L"daminScene");
 	//LoadScene(L"Start_Scene");
 }
 

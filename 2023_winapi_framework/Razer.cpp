@@ -14,7 +14,7 @@ Razer::Razer()
 
 {
 	CreateCollider();
-	
+
 	GetCollider()->SetScale(Vec2(50.f, 1000.f));
 }
 
@@ -31,7 +31,7 @@ void Razer::Update()
 
 }
 
-	void Razer::Render(HDC _dc)
+void Razer::Render(HDC _dc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetCollider()->GetScale();
@@ -48,13 +48,13 @@ void Razer::Update()
 	Component_Render(_dc);
 }
 
-	void Razer::EnterCollision(Collider* _pOther)
+void Razer::EnterCollision(Collider* _pOther)
+{
+	const Object* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"player")
 	{
-		const Object* pOtherObj = _pOther->GetObj();
-		if (pOtherObj->GetName() == L"player")
-		{
-			Player* player = (Player*)&pOtherObj;
-			player->OnHit();
-		}
+		Player* player = (Player*)&pOtherObj;
+		player->OnHit();
 	}
+}
 

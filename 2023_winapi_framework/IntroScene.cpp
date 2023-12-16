@@ -62,7 +62,7 @@ void IntroScene::ButtonDown() {
 		SceneMgr::GetInst()->LoadScene(L"Setting");
 	}
 	else if (idx == 2) {
-		// Á¾·á
+		exit(0);
 	}
 
 }
