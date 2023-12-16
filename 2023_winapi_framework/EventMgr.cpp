@@ -5,7 +5,14 @@ void EventMgr::Update()
 {
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
-		delete m_vecDead[i];
+		try
+		{
+			delete m_vecDead[i];
+		}
+		catch (const std::exception&)
+		{
+			return;
+		};
 	}
 	m_vecDead.clear();
 

@@ -25,12 +25,12 @@ Player::Player()
 	, m_dashRemainTime(0.f)
 	, m_hp(3)
 {
+	m_hp = 3;
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\Player\\PlayerAnimationSheet.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(32.f, 32.f));
 
 	CreateAnimator();
-
 	// Idle
 	GetAnimator()->CreateAnim(L"Idle_Up", m_pTex, Vec2(0.f, 0.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
 	GetAnimator()->CreateAnim(L"Idle_Down", m_pTex, Vec2(0.f, 96.f), Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.2f);
@@ -299,7 +299,11 @@ void Player::Render(HDC _dc)
 void Player::OnHit()
 {
 	m_hp--;
-	if (m_hp <= 0) {
-		//SceneMgr::GetInst()->LoadScene(L"Ending");
+	if (m_hp <= 0) 
+	{
+		ResMgr::GetInst()->Stop(SOUND_CHANNEL::END);
+		ResMgr::GetInst()->Stop(SOUND_CHANNEL::EFFECT);
+		ResMgr::GetInst()->Stop(SOUND_CHANNEL::BGM);
+		SceneMgr::GetInst()->LoadScene(L"Ending");
 	}
 }
