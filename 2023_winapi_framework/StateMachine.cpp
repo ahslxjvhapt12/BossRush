@@ -57,6 +57,7 @@ void StateMachine::ChangeState(const wstring& _stateName)
 		m_pCurState->OnExit();
 	m_pCurState = pState;
 	m_pCurState->OnEnter();
+	m_pCurStateName = _stateName;
 }
 
 State* StateMachine::FindState(const wstring& _stateName)

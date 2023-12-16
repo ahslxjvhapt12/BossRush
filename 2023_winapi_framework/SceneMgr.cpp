@@ -16,8 +16,8 @@ void SceneMgr::Init()
 
 	// Ã¹ ¾À ÁöÁ¤
 	//LoadScene(L"Setting");
-	//LoadScene(L"IntroScene");
-	LoadScene(L"daminScene");
+	LoadScene(L"IntroScene");
+	//LoadScene(L"daminScene");
 	//LoadScene(L"Start_Scene");
 }
 

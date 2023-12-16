@@ -90,6 +90,7 @@ void Boss_DestructionRay::Render(HDC _dc)
 
 void Boss_DestructionRay::OnExit()
 {
+	ResMgr::GetInst()->Stop(SOUND_CHANNEL::END);
 }
 
 void Boss_DestructionRay::CreateRay(Vec2 Pos)

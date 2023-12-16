@@ -10,10 +10,6 @@
 
 Boss_FollowEnemySpawn::Boss_FollowEnemySpawn()
 {
-	Vec2 ScreenSize = Core::GetInst()->GetResolution();
-	CreateJang(Vec2(500.f, 500.f));
-	CreateJang(Vec2(0.f, 0.f));
-
 	//m_timeLine = new TimeLine;
 
 #pragma region ½ºÆù
@@ -42,18 +38,23 @@ Boss_FollowEnemySpawn::~Boss_FollowEnemySpawn()
 
 void Boss_FollowEnemySpawn::OnEnter()
 {
-	m_fCurTime += fDT;
+	Vec2 ScreenSize = Core::GetInst()->GetResolution();
+	CreateJang(Vec2(500.f, 500.f));
+	CreateJang(Vec2(0.f, 0.f));
+
 	//for(auto enemy : m_vEnemy)
 	//{
 	//	if (enemy == nullptr)
 	//		m_vEnemy.erase(enemy);
 	//}
-	if(m_vEnemy.size() <= 0 && m_fCurTime >= 3)
-		GetOwner()->GetStateMachine()->ChangeRandomState();
 }
 
 void Boss_FollowEnemySpawn::Update()
 {
+	m_fCurTime += fDT;
+
+	if(m_vEnemy.size() <= 0 && m_fCurTime >= 3)
+		GetOwner()->GetStateMachine()->ChangeRandomState();
 }
 
 void Boss_FollowEnemySpawn::Render(HDC _dc)
@@ -72,11 +73,6 @@ void Boss_FollowEnemySpawn::CreateJang(Vec2 pos)
 	jang->SetScale(Vec2(100.f, 125.f));
 	m_vEnemy.push_back(jang);
 }
-//
-//void Spawn()
-//{
-//	Boss_FollowEnemySpawn::RnadomSpawnJang();
-//}
 
 void Boss_FollowEnemySpawn::RnadomSpawnJang()
 {

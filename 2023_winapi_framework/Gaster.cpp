@@ -43,7 +43,8 @@ Gaster::~Gaster()
 
 void Gaster::Update()
 {
-	const vector<Object*>& v = SceneMgr::GetInst()->GetCurScene()->GetGroupObject(OBJECT_GROUP::BULLET);
+	m_shotTime += fDT;
+
 	if (m_shotTime >= m_shotDelay)
 	{
 		Razer* pRazer = new Razer;
@@ -57,16 +58,8 @@ void Gaster::Update()
 		pRazer->SetName(L"Boss_Razer");
 		SceneMgr::GetInst()->GetCurScene()->AddObject(pRazer, OBJECT_GROUP::MONSTER);
 		EventMgr::GetInst()->DeleteObject(this);
-		/*Vec2 vPos = GetPos();
-		vPos.x += 300.f * fDT * m_vDir.x;
-		vPos.y += 300.f * fDT * m_vDir.y;
-		SetPos(vPos);*/
 		return;
 	}
-
-	const vector<Object*>& v1 = SceneMgr::GetInst()->GetCurScene()->GetGroupObject(OBJECT_GROUP::BULLET);
-
-	m_shotTime += fDT;
 
 	GetAnimator()->Update();
 }
